@@ -98,7 +98,7 @@ static LaunchAppMgr *launchAppMgr = nil;
             {
                 NSString* title = [item objectForKey:@"title"];
                 NSString* image = [item objectForKey:@"image"];
-                NSString* targetTitle = [item objectForKey:@"controllerTitle"];
+                NSString* targetTitle = [item objectForKey:@"scheme"];
                 BOOL isSystemApp = [[item objectForKey:@"isSystemApp"] boolValue];
                 BOOL isPrefsRoot = [[item objectForKey:@"isPrefsRoot"] boolValue];
                 
@@ -156,11 +156,11 @@ static LaunchAppMgr *launchAppMgr = nil;
         for(MyLauncherItem *item in page)
         {
             NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
-            [itemToSave setObject:item.title forKey:@"title"];
-            [itemToSave setObject:item.image forKey:@"image"];
+            [itemToSave setObject:item.apprecord.m_name forKey:@"title"];
+            [itemToSave setObject:item.apprecord.m_icon forKey:@"image"];
             [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isSystemApp] forKey:@"isSystemApp"];
             [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isPrefsRoot] forKey:@"isPrefsRoot"];
-            [itemToSave setObject:item.controllerTitle forKey:@"controllerTitle"];
+            [itemToSave setObject:item.apprecord.m_scheme forKey:@"scheme"];
             
             [pageToSave addObject:itemToSave];
         }
@@ -175,6 +175,9 @@ static LaunchAppMgr *launchAppMgr = nil;
     MyLauncherItem* item = [[MyLauncherItem alloc ] initWithRecord:record];
     NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
     [savedPage addObject:item];
+    [self saveLauncherItems:self.saveLaunchArrays];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:nil userInfo:nil];
 }
 
 - (BOOL)deleteLaunchItem:(MyLauncherItem*)item {

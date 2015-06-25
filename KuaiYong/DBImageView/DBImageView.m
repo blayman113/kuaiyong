@@ -179,7 +179,31 @@ static NSString *const kDBImageViewShouldStartDownload = @"kDBImageViewShouldSta
 {
     _imageView.image = image;
 }
+/*
+// 视图触发时监听事件
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+//    [self sendActionsForControlEvents:UIControlEventTouchDown];
+}
 
+// 视图触发结束时监听事件
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    
+//    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
+// 视图触发取消时监听事件
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+    
+//    [self sendActionsForControlEvents:UIControlEventTouchUpOutside];
+}
+*/
 @end
 // 版权属于原作者
 // http://code4app.com (cn) http://code4app.net (en)

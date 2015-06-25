@@ -67,6 +67,15 @@
     self.isEditing = NO;
     
     [self initNavBtn];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(launcherItemChangedNotification:)
+                                                 name:kLauncherItemChangedNotification
+                                               object:nil];
+}
+
+- (void)launcherItemChangedNotification:(NSNotification *)aNotification {
+    [self.launcherView performSelector:@selector(launcherItemChanged) withObject:nil];
 }
 
 - (void)initNavBtn{

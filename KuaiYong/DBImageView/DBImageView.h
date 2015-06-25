@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DBImageView : UIView
+@interface DBImageView : UIControl
 @property (nonatomic, copy) NSString *imageWithPath;
 @property (nonatomic, strong) UIImage *placeHolder, *image;
 

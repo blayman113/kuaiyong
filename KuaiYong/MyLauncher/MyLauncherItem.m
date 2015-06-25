@@ -83,7 +83,7 @@
 		[subview removeFromSuperview];
 	
 
-    NSInteger imageWidth = 30;
+    NSInteger imageWidth = 60;
     
     UIImage *image = nil;
     
@@ -104,6 +104,8 @@
     if( self.apprecord.m_isSystemApp ) {
         UIImageView *itemImage = [[UIImageView alloc] initWithImage:image];
         itemImage.frame = rectImage;
+        itemImage.layer.cornerRadius = 8;
+        itemImage.layer.masksToBounds =YES;
         [self addSubview:itemImage];
         itemImageWidth = itemImage.bounds.size.width;
         itemImageHeight = itemImage.bounds.size.height;
@@ -111,8 +113,14 @@
     else {
         DBImageView* dbImageView = [[DBImageView alloc] initWithFrame:rectImage];
         [dbImageView setImageWithPath:self.apprecord.m_icon];
-        dbImageView.layer.cornerRadius = 6;
+        dbImageView.layer.cornerRadius = 8;
         [self addSubview:dbImageView];
+        
+        [dbImageView addTarget:self action:@selector(itemTouchedUpInside) forControlEvents:UIControlEventTouchUpInside];
+        [dbImageView addTarget:self action:@selector(itemTouchedUpOutside) forControlEvents:UIControlEventTouchUpOutside];
+        [dbImageView addTarget:self action:@selector(itemTouchedDown) forControlEvents:UIControlEventTouchDown];
+        [dbImageView addTarget:self action:@selector(itemTouchCancelled) forControlEvents:UIControlEventTouchCancel];
+         
         itemImageWidth = dbImageView.bounds.size.width;
         itemImageHeight = dbImageView.bounds.size.height;
     }
@@ -149,11 +157,27 @@
 	itemLabel.textAlignment = NSTextAlignmentCenter;
 	itemLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	itemLabel.text = self.title;
-	itemLabel.numberOfLines = 2;
+	itemLabel.numberOfLines = 1;
 	[self addSubview:itemLabel];
 }
 
 #pragma mark - Touch
+
+-(void)itemTouchedUpInside{
+    [self.delegate itemTouchedUpInside:self];
+}
+         
+-(void)itemTouchedUpOutside{
+    [self.delegate itemTouchedUpOutside:self];
+}
+
+-(void)itemTouchedDown{
+    [self.delegate itemTouchedDown:self];
+}
+
+-(void)itemTouchCancelled{
+    [self.delegate itemTouchCancelled:self];
+}
 
 -(void)closeItem:(id)sender
 {

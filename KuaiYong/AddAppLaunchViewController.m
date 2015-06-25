@@ -124,6 +124,7 @@
 
 - (void) tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [cell setBackgroundColor:[UIColor clearColor]];
     // 设置选中效果
 //    UIView* selectView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, cell.bounds.size.width, cell.bounds.size.height-2)];
 //    [selectView setBackgroundColor:COLOR(240, 240, 240)];

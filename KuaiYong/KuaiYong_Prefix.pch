@@ -9,3 +9,5 @@
 
 #import "Tools.h"
 #import "AppRecord.h"
+
+#define kLauncherItemChangedNotification @"LauncherItemChangedNotification"

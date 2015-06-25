@@ -25,6 +25,10 @@
 
 @protocol MyLauncherItemDelegate <NSObject>
 -(void)didDeleteItem:(id)item;
+-(void)itemTouchedUpInside:(id)item;
+-(void)itemTouchedUpOutside:(id)item;
+-(void)itemTouchedDown:(id)item;
+-(void)itemTouchCancelled:(id)item;
 @end
 
 @interface MyLauncherItem : UIControl {	

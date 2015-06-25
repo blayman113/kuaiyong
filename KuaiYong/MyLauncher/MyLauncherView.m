@@ -80,6 +80,7 @@ static const CGFloat iPadLandscapeYPadding = 30;
 -(void)organizePages;
 -(NItemLocation)itemLocation;
 -(BOOL)itemMovable:(MyLauncherItem *)itemToSearch;
+-(void)launcherItemChanged;
 -(UIDeviceOrientation)currentLayoutOrientation;
 @property (nonatomic, retain) NSTimer *itemHoldTimer;
 @property (nonatomic, retain) NSTimer *movePagesTimer;
@@ -141,8 +142,8 @@ static const CGFloat iPadLandscapeYPadding = 30;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    itemsAdded = NO;
-    [self layoutItems];
+//    itemsAdded = NO;
+//    [self layoutItems];
 }
 
 - (void)dealloc
@@ -776,6 +777,11 @@ static const CGFloat iPadLandscapeYPadding = 30;
         }
     }
     return YES;
+}
+
+- (void)launcherItemChanged {
+    itemsAdded = NO;
+    [self layoutItems];
 }
 
 @end

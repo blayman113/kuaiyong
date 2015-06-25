@@ -14,6 +14,7 @@
 @interface AddAppLaunchViewController () <UITableViewDataSource,UITableViewDelegate,InstalledAppTableViewCellDelegate>
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) NSMutableArray* appArrays;
+@property (nonatomic, strong) NSMutableArray* systemAppArrays;
 @end
 
 @implementation AddAppLaunchViewController
@@ -49,6 +50,7 @@
     [self initNavBtn];
     
     self.appArrays = [[LaunchAppMgr sharedManager] getInstallApps];
+    self.systemAppArrays = [[LaunchAppMgr sharedManager] getSystemApps];
     
     self.tableView = [[UITableView alloc]  initWithFrame:self.view.frame];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -80,7 +82,7 @@
 }
 
 - (void)switchSegment:(NSInteger)index {
-    
+    [self.tableView reloadData];
 }
 
 -(void)segmentAction:(UISegmentedControl *)Seg {
@@ -99,7 +101,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.appArrays count];
+    if( _segmentedControl.selectedSegmentIndex == 0 )
+        return [self.appArrays count];
+    else
+        return [self.systemAppArrays count];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -113,8 +118,14 @@
         cell = [[InstalledAppTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setDelegate:self];
     }
-    AppRecord *record = [self.appArrays objectAtIndex:indexPath.row];
-    cell.record = record;
+    if( _segmentedControl.selectedSegmentIndex == 0 ) {
+        AppRecord *record = [self.appArrays objectAtIndex:indexPath.row];
+        cell.record = record;
+    }
+    else{
+        AppRecord *record = [self.systemAppArrays objectAtIndex:indexPath.row];
+        cell.record = record;
+    }
     return cell;
 }
 
@@ -124,6 +135,10 @@
 
 - (void) tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIView *backView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView = backView;
+    cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+    [cell setBackgroundView:[[UIView alloc] init]];
     [cell setBackgroundColor:[UIColor clearColor]];
     // 设置选中效果
 //    UIView* selectView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, cell.bounds.size.width, cell.bounds.size.height-2)];

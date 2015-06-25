@@ -43,7 +43,8 @@
 -(void) setupInstalledAppCellView{
     _dbImageView = [[DBImageView alloc] initWithFrame:CGRectMake(20, 10, 42, 42)];
     _dbImageView.contentMode = UIViewContentModeScaleAspectFit;
-    _dbImageView.layer.cornerRadius = 6;
+    _dbImageView.layer.cornerRadius = 8;
+    [_dbImageView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:_dbImageView];
 
     self.backgroundColor = COLOR_COMMON_BACKGROUND;
@@ -72,7 +73,13 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.titleName.text = self.record.m_name;
-    [_dbImageView setImageWithPath:self.record.m_icon];
+    if( self.record.m_isSystemApp) {
+        [_dbImageView setImage:[UIImage imageNamed:self.record.m_icon]];
+    }
+    else {
+        [_dbImageView setImageWithPath:nil];
+        [_dbImageView setImageWithPath:self.record.m_icon];
+    }
     
     if( self.record.m_isOnShow ) {
         [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];

@@ -17,6 +17,7 @@
 
 - (NSMutableArray*)getInstallApps;
 - (NSMutableArray*)getSaveLauncherItems;
+- (NSMutableArray*)getSystemApps;
 
 - (BOOL) launchAppItem:(MyLauncherItem*)item;
 

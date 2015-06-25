@@ -12,6 +12,7 @@
 @interface LaunchAppMgr ()
 
 @property (nonatomic, strong) NSMutableArray* launchAppArrays;
+@property (nonatomic, strong) NSMutableArray* systemAppArrays;
 @property (nonatomic, strong) NSMutableArray* saveLaunchArrays; //添加显示的数组
 @end
 
@@ -32,9 +33,11 @@ static LaunchAppMgr *launchAppMgr = nil;
 - (void)initalize {
     self.launchAppArrays = [[NSMutableArray alloc] init];
     self.saveLaunchArrays = [[NSMutableArray alloc] init];
+    self.systemAppArrays = [[NSMutableArray alloc] init];
     
     [self loadSaveLanuchItems];
     [self loadAllAppItemFromPlist];
+    [self loadSystemAppItemFromPlist];
 }
 
 - (BOOL) launchAppItem:(MyLauncherItem*)item {
@@ -73,6 +76,24 @@ static LaunchAppMgr *launchAppMgr = nil;
                     AppRecord* record = [AppRecord initAppRecord:url toName:name toScheme:scheme isSystemApp:NO isPrefsRoot:NO];
                     [self.launchAppArrays addObject:record];
                 }
+            }
+        }
+    }
+}
+
+- (void) loadSystemAppItemFromPlist {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"SystemAppList" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    NSArray* arrayList = [data valueForKey:@"data"];
+    for( NSInteger index = 0; index< [arrayList count]; index++ ) {
+        NSDictionary* dictItem = [arrayList objectAtIndex:index];
+        if( dictItem) {
+            NSString* scheme = [dictItem objectForKey:@"url"];
+            if([scheme length]>3) {
+                NSString* name = [dictItem objectForKey:@"displayName"];
+                NSString* url = [dictItem objectForKey:@"iconImage"];
+                AppRecord* record = [AppRecord initAppRecord:url toName:name toScheme:scheme isSystemApp:YES isPrefsRoot:NO];
+                [self.systemAppArrays addObject:record];
             }
         }
     }
@@ -225,6 +246,32 @@ static LaunchAppMgr *launchAppMgr = nil;
         }
     }
     return installArrays;
+}
+
+- (NSMutableArray*)getSystemApps {
+    for( NSInteger index = 0; index< [self.systemAppArrays count]; index++ ) {
+        AppRecord* record = [self.systemAppArrays objectAtIndex:index];
+        NSString* formatScheme = record.m_scheme;
+        if( !record.m_isPrefsRoot ) {
+            formatScheme = [self formatAppUrlScheme:record.m_scheme];
+        }
+
+        BOOL isOnShow = NO;
+        if( [self.saveLaunchArrays count]>0 ) {
+            NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
+            for( NSInteger kIndex = 0; kIndex< [savedPage count]; kIndex++ ) {
+                MyLauncherItem* saveItem = [savedPage objectAtIndex:kIndex];
+                AppRecord* saveRecord = saveItem.apprecord;
+                if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
+                   && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {
+                    isOnShow = YES;
+                    break;
+                }
+            }
+        }
+        record.m_isOnShow = isOnShow;
+    }
+    return self.systemAppArrays;
 }
 
 @end

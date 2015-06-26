@@ -79,11 +79,27 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
         }
     }
     
-    NSInteger curRowCount = [[self.saveLaunchArrays objectAtIndex:0] count]/4;
+    itemsCount--;
+    
+    NSInteger curRowCount = (itemsCount%4==0)?itemsCount/4:(itemsCount/4+1);
+    
+    CGRect rectBtn = CGRectMake((nScreenWidth-130)/2, curRowCount*92 + (92-36)/2, 130, 36);
+    UIButton* editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    editBtn.frame = rectBtn;
+    [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [editBtn setBackgroundImage:[UIImage imageNamed:@"widget_btn_gray_empty"] forState:UIControlStateNormal];
+    editBtn.backgroundColor = [UIColor clearColor];
+    [editBtn addTarget:self action:@selector(actionTouchEditBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:editBtn];
     
     //使用preferredContentSize设置大小 且只用设置高度就好了
-    NSInteger preferredHeight = curRowCount*92;
+    NSInteger preferredHeight = curRowCount*92+92;
     self.preferredContentSize = CGSizeMake(0, preferredHeight);
+}
+
+- (IBAction)actionTouchEditBtn:(id)sender {
+    [self.extensionContext openURL:[NSURL URLWithString:@"kuaiyong://"] completionHandler:nil];
 }
 
 - (BOOL) launchAppItem:(MyLauncherItem*)item {

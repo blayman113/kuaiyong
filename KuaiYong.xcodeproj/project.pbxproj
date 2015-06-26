@@ -159,6 +159,9 @@
 		A7FC523B1B3D022C00D87EC4 /* app_videos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC52141B3D022C00D87EC4 /* app_videos@2x.png */; };
 		A7FC523C1B3D022C00D87EC4 /* app_weather.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC52151B3D022C00D87EC4 /* app_weather.png */; };
 		A7FC523D1B3D022C00D87EC4 /* app_weather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC52161B3D022C00D87EC4 /* app_weather@2x.png */; };
+		A7FC52411B3D3BE300D87EC4 /* widget_btn_gray_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC523E1B3D3BE300D87EC4 /* widget_btn_gray_empty.png */; };
+		A7FC52421B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC523F1B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png */; };
+		A7FC52431B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FC52401B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -371,6 +374,9 @@
 		A7FC52141B3D022C00D87EC4 /* app_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_videos@2x.png"; sourceTree = "<group>"; };
 		A7FC52151B3D022C00D87EC4 /* app_weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_weather.png; sourceTree = "<group>"; };
 		A7FC52161B3D022C00D87EC4 /* app_weather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_weather@2x.png"; sourceTree = "<group>"; };
+		A7FC523E1B3D3BE300D87EC4 /* widget_btn_gray_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = widget_btn_gray_empty.png; sourceTree = "<group>"; };
+		A7FC523F1B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "widget_btn_gray_empty@3x.png"; sourceTree = "<group>"; };
+		A7FC52401B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "widget_btn_gray_empty@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,10 +609,13 @@
 		A7FC51CB1B3C0F0D00D87EC4 /* kuaiyongToday */ = {
 			isa = PBXGroup;
 			children = (
+				A7FC523E1B3D3BE300D87EC4 /* widget_btn_gray_empty.png */,
+				A7FC523F1B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png */,
+				A7FC52401B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png */,
 				A7FC51EF1B3D022C00D87EC4 /* SystemIcon */,
 				A7FC51E21B3CFC1700D87EC4 /* DBImageView */,
-				A7FC51DF1B3CFBC500D87EC4 /* MyLauncherItem.m */,
 				A7FC51E01B3CFBC500D87EC4 /* MyLauncherItem.h */,
+				A7FC51DF1B3CFBC500D87EC4 /* MyLauncherItem.m */,
 				A7FC51DC1B3CFB3700D87EC4 /* AppRecord.m */,
 				A7FC51DD1B3CFB3700D87EC4 /* AppRecord.h */,
 				A7FC51DB1B3CF7DA00D87EC4 /* kuaiyongToday.entitlements */,
@@ -875,6 +884,7 @@
 				A7FC52361B3D022C00D87EC4 /* app_reminders@2x.png in Resources */,
 				A7FC52241B3D022C00D87EC4 /* app_imessage@2x.png in Resources */,
 				A7FC521A1B3D022C00D87EC4 /* app_calendar@2x.png in Resources */,
+				A7FC52421B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png in Resources */,
 				A7FC523D1B3D022C00D87EC4 /* app_weather@2x.png in Resources */,
 				A7FC522A1B3D022C00D87EC4 /* app_maps@2x.png in Resources */,
 				A7FC52311B3D022C00D87EC4 /* app_phone.png in Resources */,
@@ -883,6 +893,7 @@
 				A7FC51D21B3C0F0D00D87EC4 /* MainInterface.storyboard in Resources */,
 				A7FC522F1B3D022C00D87EC4 /* app_passbook.png in Resources */,
 				A7FC52191B3D022C00D87EC4 /* app_calendar.png in Resources */,
+				A7FC52411B3D3BE300D87EC4 /* widget_btn_gray_empty.png in Resources */,
 				A7FC52321B3D022C00D87EC4 /* app_phone@2x.png in Resources */,
 				A7FC52351B3D022C00D87EC4 /* app_reminders.png in Resources */,
 				A7FC52271B3D022C00D87EC4 /* app_mail.png in Resources */,
@@ -904,6 +915,7 @@
 				A7FC52331B3D022C00D87EC4 /* app_photos.png in Resources */,
 				A7FC52181B3D022C00D87EC4 /* app_appstore@2x.png in Resources */,
 				A7FC52281B3D022C00D87EC4 /* app_mail@2x.png in Resources */,
+				A7FC52431B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png in Resources */,
 				A7FC52201B3D022C00D87EC4 /* app_gamecenter@2x.png in Resources */,
 				A7FC522C1B3D022C00D87EC4 /* app_music@2x.png in Resources */,
 				A7FC523B1B3D022C00D87EC4 /* app_videos@2x.png in Resources */,

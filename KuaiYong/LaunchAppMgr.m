@@ -94,7 +94,8 @@ static LaunchAppMgr *launchAppMgr = nil;
             if([scheme length]>3) {
                 NSString* name = [dictItem objectForKey:@"displayName"];
                 NSString* url = [dictItem objectForKey:@"iconImage"];
-                AppRecord* record = [AppRecord initAppRecord:url toName:name toScheme:scheme isSystemApp:YES isPrefsRoot:NO];
+                BOOL isPrefsRoot = [[dictItem objectForKey:@"isPrefsRoot"] boolValue];
+                AppRecord* record = [AppRecord initAppRecord:url toName:name toScheme:scheme isSystemApp:YES isPrefsRoot:isPrefsRoot];
                 [self.systemAppArrays addObject:record];
             }
         }
@@ -149,11 +150,11 @@ static LaunchAppMgr *launchAppMgr = nil;
         MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
         [savedPage addObject:calendarItem];
         
-        AppRecord* photoRecord = [AppRecord initAppRecord:@"app_photos.png" toName:@"照片" toScheme:@"photos-redirect://" isSystemApp:YES isPrefsRoot:NO];
+        AppRecord* photoRecord = [AppRecord initAppRecord:@"app_photos.png" toName:@"照片" toScheme:@"photos-redirect" isSystemApp:YES isPrefsRoot:NO];
         MyLauncherItem* photoItem = [[MyLauncherItem alloc] initWithRecord:photoRecord];
         [savedPage addObject:photoItem];
         
-        AppRecord* notesRecord = [AppRecord initAppRecord:@"app_reminders" toName:@"提醒事项" toScheme:@"x-apple-reminder://" isSystemApp:YES isPrefsRoot:NO];
+        AppRecord* notesRecord = [AppRecord initAppRecord:@"app_reminders" toName:@"提醒事项" toScheme:@"x-apple-reminder" isSystemApp:YES isPrefsRoot:NO];
         MyLauncherItem* notesItem = [[MyLauncherItem alloc] initWithRecord:notesRecord];
         [savedPage addObject:notesItem];
         

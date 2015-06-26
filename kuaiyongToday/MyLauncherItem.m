@@ -114,11 +114,8 @@
         dbImageView.layer.cornerRadius = 8;
         [self addSubview:dbImageView];
         
-        [dbImageView addTarget:self action:@selector(itemTouchedUpInside) forControlEvents:UIControlEventTouchUpInside];
-        [dbImageView addTarget:self action:@selector(itemTouchedUpOutside) forControlEvents:UIControlEventTouchUpOutside];
-        [dbImageView addTarget:self action:@selector(itemTouchedDown) forControlEvents:UIControlEventTouchDown];
-        [dbImageView addTarget:self action:@selector(itemTouchCancelled) forControlEvents:UIControlEventTouchCancel];
-         
+        [dbImageView addTarget:self action:@selector(itemTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        
         itemImageWidth = dbImageView.bounds.size.width;
         itemImageHeight = dbImageView.bounds.size.height;
     }
@@ -145,20 +142,8 @@
 
 #pragma mark - Touch
 
--(void)itemTouchedUpInside{
+-(IBAction)itemTouchedUpInside:(id)sender{
     [self.delegate itemTouchedUpInside:self];
-}
-         
--(void)itemTouchedUpOutside{
-    [self.delegate itemTouchedUpOutside:self];
-}
-
--(void)itemTouchedDown{
-    [self.delegate itemTouchedDown:self];
-}
-
--(void)itemTouchCancelled{
-    [self.delegate itemTouchCancelled:self];
 }
 
 -(void)closeItem:(id)sender

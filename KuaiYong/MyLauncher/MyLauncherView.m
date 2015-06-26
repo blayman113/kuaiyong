@@ -312,7 +312,8 @@ static const CGFloat iPadLandscapeYPadding = 30;
     
 	for (NSMutableArray *page in self.pages)
 	{
-        CGFloat x = minX;
+        int offsetX = (pageWidth - itemWidth*columnCount)/5;
+        CGFloat x = offsetX;
         CGFloat y = minY;
 		int itemsCount = 1;
 		for (MyLauncherItem *item in page)
@@ -340,12 +341,12 @@ static const CGFloat iPadLandscapeYPadding = 30;
 				[self.pagesScrollView addSubview:item];
 			}
 			item.closeButton.hidden = editing ? NO : YES;
-			x += itemWidth + paddingX;
+			x += itemWidth + offsetX;
 			
 			if ( itemsCount % columnCount == 0)
 			{
 				y += itemHeight + paddingY;
-				x = minX;
+				x = offsetX;
 			}
 			
 			itemsCount++;

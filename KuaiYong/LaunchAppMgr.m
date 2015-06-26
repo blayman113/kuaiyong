@@ -9,6 +9,8 @@
 #import "LaunchAppMgr.h"
 #import "AppRecord.h"
 
+NSString *kUserDefaultGroupID = @"group.360.freewifi";
+
 @interface LaunchAppMgr ()
 
 @property (nonatomic, strong) NSMutableArray* launchAppArrays;
@@ -160,6 +162,8 @@ static LaunchAppMgr *launchAppMgr = nil;
         [savedPage addObject:weatherItem];
         
         [self.saveLaunchArrays addObject:savedPage];
+        
+        [self saveLauncherItems:self.saveLaunchArrays];
     }
 }
 
@@ -189,7 +193,10 @@ static LaunchAppMgr *launchAppMgr = nil;
     }
     
     [Tools saveToUserDefaults:pagesToSave key:@"myLauncherView"];
-//    [Tools saveToUserDefaults:[NSNumber numberWithInt:numberOfImmovableItems] key:@"myLauncherViewImmovable"];
+    
+    NSUserDefaults *shareUserDefault = [[NSUserDefaults alloc] initWithSuiteName:kUserDefaultGroupID];
+    [shareUserDefault setObject:[NSKeyedArchiver archivedDataWithRootObject:pagesToSave] forKey:@"saveapp"];
+    [shareUserDefault synchronize];
 }
 
 - (void)addLauncherItem:(AppRecord*)record {

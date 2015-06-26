@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>kuaiyongToday.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>A7DC29C91B2C4C6B00D07F9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7FC51C61B3C0F0D00D87EC4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

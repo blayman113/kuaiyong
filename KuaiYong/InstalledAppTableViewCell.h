@@ -10,7 +10,7 @@
 #import "AppRecord.h"
 
 @protocol InstalledAppTableViewCellDelegate <NSObject>
-- (void)didTouchCommandButton:(AppRecord*)record;
+- (void)didTouchCommandButton:(AppRecord*)record isOnShow:(BOOL)isOnShow;
 @end
 
 @interface InstalledAppTableViewCell : UITableViewCell

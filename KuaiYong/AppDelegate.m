@@ -41,7 +41,7 @@
     [self.navigationController setViewControllers:@[[[ViewController alloc] init]]];
     //40,141,255
     UIColor * color = [UIColor colorWithRed:(40/255.0) green:(141/255.0) blue:(255/255) alpha:1.0f];
-    [[DSNavigationBar appearance] setNavigationBarWithColor:color];
+    [[DSNavigationBar appearance] setNavigationBarWithColor:COLOR(80, 87, 131)];
     [self.window setRootViewController:self.navigationController];
 }
 

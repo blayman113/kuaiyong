@@ -22,14 +22,19 @@
 #import "UIHelper.h"
 #import "AddAppLaunchViewController.h"
 #import "LaunchAppMgr.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+#import "EditLaunchAppViewController.h"
 
-@interface MyLauncherViewController ()
+@interface MyLauncherViewController () <ABPeoplePickerNavigationControllerDelegate, UINavigationControllerDelegate>
 -(NSMutableArray *)loadLauncherItems;
 @property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, assign) CGRect statusBarFrame;
 @property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, strong) ABPeoplePickerNavigationController* picker;
+@property (nonatomic, assign) BOOL isClickMessage;
 @end
 
 @implementation MyLauncherViewController
@@ -54,7 +59,7 @@
 	[super loadView];
 	
 	[self setLauncherView:[[MyLauncherView alloc] initWithFrame:self.view.bounds]];
-	[self.launcherView setBackgroundColor:COLOR(234,237,250)];
+	[self.launcherView setBackgroundColor:COLOR_COMMON_BACKGROUND];
 	[self.launcherView setDelegate:self];
 	self.view = self.launcherView;
 	
@@ -100,22 +105,73 @@
     
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightButton];
     self.navigationItem.rightBarButtonItem = rightItem;
+
+    int offsetX = 20;
+    int btnHeight = 92;
+    int btnWidth = (self.view.frame.size.width - offsetX*4)/3;
+
+    CGRect rectBottom = CGRectMake(0, self.view.frame.size.height - btnHeight, self.view.frame.size.width, btnHeight);
+    UIView* bottomView = [[UIView alloc] initWithFrame:rectBottom];
+    UIColor * color = [UIColor colorWithRed:(43/255.0) green:(45/255.0) blue:(66/255) alpha:1.0f];
+    [bottomView setBackgroundColor:COLOR(80, 87, 131)];
     
-    UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:bottomView];
+
+    CGRect rectFrame = CGRectMake(offsetX, bottomView.frame.size.height - btnHeight, btnWidth, btnHeight);
+
+    AppRecord* phoneRecord = [AppRecord initAppRecord:@"app_phone.png" toName:@"添加联系人" toScheme:@"tel" isSystemApp:YES isPrefsRoot:NO];
+    MyLauncherItem *phoneItem = [[MyLauncherItem alloc] initWithRecord:phoneRecord];
+    phoneItem.frame = rectFrame;
+	phoneItem.delegate = self;
+    [phoneItem layoutItem];
+    [phoneItem addTarget:self action:@selector(addContactApp) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:phoneItem];
     
-    CGRect rectFrame = CGRectMake(0, self.view.frame.size.height - 30, self.view.frame.size.width, 30);
-    rightButton.backgroundColor = [UIColor clearColor];
-    rightButton.frame = rectFrame;
-    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 50, 1, 0);
-    [rightButton setTitle:@"添加应用" forState:UIControlStateNormal];
-    [rightButton setImage:[UIImage imageNamed:@"edit"] forState:UIControlStateNormal];
-    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(0, 36, 0, 0)];
-    [rightButton addTarget:self action:@selector(addLaunchApp) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:rightButton];
+    rectFrame = CGRectMake(rectFrame.origin.x+rectFrame.size.width+offsetX, bottomView.frame.size.height - btnHeight, btnWidth, btnHeight);
+    AppRecord* msgRecord = [AppRecord initAppRecord:@"app_imessage.png" toName:@"添加短信" toScheme:@"sms" isSystemApp:YES isPrefsRoot:NO];
+    MyLauncherItem *msgItem = [[MyLauncherItem alloc] initWithRecord:msgRecord];
+    msgItem.frame = rectFrame;
+    msgItem.delegate = self;
+    [msgItem layoutItem];
+    [msgItem addTarget:self action:@selector(addMessageApp) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:msgItem];
+    
+    rectFrame = CGRectMake(rectFrame.origin.x+rectFrame.size.width+offsetX, bottomView.frame.size.height - btnHeight, btnWidth, btnHeight);
+    AppRecord* appRecord = [AppRecord initAppRecord:@"app_app.png" toName:@"添加应用" toScheme:@"app" isSystemApp:YES isPrefsRoot:NO];
+    MyLauncherItem *appItem = [[MyLauncherItem alloc] initWithRecord:appRecord];
+    appItem.frame = rectFrame;
+    appItem.delegate = self;
+    [appItem layoutItem];
+    [appItem addTarget:self action:@selector(addLaunchApp) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:appItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.launcherView viewDidAppear:animated];
+}
+
+- (void)addContactApp{
+    self.isClickMessage = NO;
+    self.picker = nil;
+    if(!self.picker){
+        self.picker = [[ABPeoplePickerNavigationController alloc] init];
+        // place the delegate of the picker to the controll
+        self.picker.peoplePickerDelegate = self;
+        self.picker.predicateForSelectionOfPerson = [NSPredicate predicateWithValue:false];
+    }
+    [self presentViewController:self.picker animated:YES completion:nil];
+}
+
+- (void)addMessageApp{
+    self.isClickMessage = YES;
+    self.picker = nil;
+    if(!self.picker){
+        self.picker = [[ABPeoplePickerNavigationController alloc] init];
+        // place the delegate of the picker to the controll
+        self.picker.peoplePickerDelegate = self;
+        self.picker.predicateForSelectionOfPerson = [NSPredicate predicateWithValue:false];
+    }
+    [self presentViewController:self.picker animated:YES completion:nil];
 }
 
 - (void)addLaunchApp{
@@ -277,6 +333,56 @@
 -(void)clearSavedLauncherItems {
     [Tools saveToUserDefaults:nil key:@"myLauncherView"];
     [Tools saveToUserDefaults:nil key:@"myLauncherViewImmovable"];
+}
+
+#pragma mark - ABPeoplePickerNavigationControllerDelegate
+
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    ABMultiValueRef phone = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    long index = ABMultiValueGetIndexForIdentifier(phone,identifier);
+    NSString *phoneNO = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phone, index);
+    phoneNO = [phoneNO stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSLog(@"%@", phoneNO);
+    if (phone && phoneNO.length == 11) {
+        
+        NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        if (firstName==nil) {
+            firstName=@"";
+        }
+        NSString *lastName=(__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        if (lastName==nil) {
+            lastName=@"";
+        }
+        NSString* fullName = [NSString stringWithFormat:@"%@%@", firstName, lastName];
+        [peoplePicker dismissViewControllerAnimated:YES completion:^{
+            EditLaunchAppViewController* editAppVC = [[EditLaunchAppViewController alloc] init];
+            if( self.isClickMessage ) {
+                editAppVC.imageName = @"app_imessage";
+                editAppVC.scheme=@"sms://";
+            }
+            else {
+                editAppVC.imageName = @"app_phone";
+                editAppVC.scheme=@"tel://";
+            }
+            editAppVC.name = fullName;
+            editAppVC.value = phoneNO;
+            [self.navigationController pushViewController:editAppVC animated:YES];
+        }];
+    }else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"错误提示" message:@"请选择正确手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController*)peoplePicker didSelectPerson:(ABRecordRef)person NS_AVAILABLE_IOS(8_0)
+{
+    ABPersonViewController *personViewController = [[ABPersonViewController alloc] init];
+    personViewController.displayedPerson = person;
+    [peoplePicker pushViewController:personViewController animated:YES];
+}
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [peoplePicker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

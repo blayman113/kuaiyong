@@ -140,6 +140,7 @@
     cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     [cell setBackgroundView:[[UIView alloc] init]];
     [cell setBackgroundColor:[UIColor clearColor]];
+
     // 设置选中效果
 //    UIView* selectView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, cell.bounds.size.width, cell.bounds.size.height-2)];
 //    [selectView setBackgroundColor:COLOR(240, 240, 240)];
@@ -154,13 +155,14 @@
     return nil;
 }
 
-- (void)didTouchCommandButton:(AppRecord*)record {
-    if( record.m_isOnShow ) {
-        
+- (void)didTouchCommandButton:(AppRecord*)record isOnShow:(BOOL)isOnShow {
+    if( isOnShow ) {
+         [[LaunchAppMgr sharedManager] addLauncherItem:record];
     }
     else {
-        [[LaunchAppMgr sharedManager] addLauncherItem:record];
-        [self actionTouchBackButton:nil];
+         [[LaunchAppMgr sharedManager] deleteSaveLaunchItem:record];
+       
+//        [self actionTouchBackButton:nil];
         
     }
 }

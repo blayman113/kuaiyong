@@ -15,6 +15,8 @@
 }
 @property (nonatomic,strong) UILabel *titleName;
 @property (nonatomic,strong) UIButton *rightButton;
+@property (nonatomic,strong) UISwitch* switchBtn;
+@property (nonatomic,strong) UIView* sepLineView;
 
 @end
 
@@ -55,6 +57,23 @@
     [self.contentView addSubview:self.titleName];
     
     CGRect rectFrame = CGRectMake(self.frame.size.width - 72, 15, 52, 30);
+    self.switchBtn = [[UISwitch alloc] initWithFrame:rectFrame];
+//    self.switchBtn.onTintColor=[UIColor greenColor];
+//    self.switchBtn.tintColor=[UIColor grayColor];
+    self.switchBtn.thumbTintColor=[UIColor whiteColor];
+    [self.switchBtn addTarget:self action:@selector(touchSwitchBtn:) forControlEvents:UIControlEventValueChanged];
+    [self.contentView addSubview:self.switchBtn];
+    
+    // 添加分割线
+    CGFloat lineHeight = 0.5;
+    if ([[UIScreen mainScreen] scale] == 1)
+    {
+        lineHeight = 1;
+    }
+    self.sepLineView = [[UIView alloc] initWithFrame:CGRectMake(20, self.contentView.frame.size.height-lineHeight, self.contentView.frame.size.width, lineHeight)];
+    [self.sepLineView setBackgroundColor:[UIColor grayColor]];
+    [self.contentView addSubview:self.sepLineView];
+    /*
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.rightButton.frame = rectFrame;
     self.rightButton.layer.cornerRadius = 4;
@@ -63,11 +82,18 @@
     [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green1.png"] forState:UIControlStateNormal];
     [self.rightButton addTarget:self action:@selector(actionTouchButton) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.rightButton];
+     */
+}
+
+-(void)touchSwitchBtn:(id)sender {
+    UISwitch *switchBtn=(UISwitch *)sender;
+    if( self.delegate )
+        [self.delegate didTouchCommandButton:self.record isOnShow:switchBtn.isOn];
 }
 
 -(void)actionTouchButton{
     if( self.delegate )
-        [self.delegate didTouchCommandButton:self.record];
+        [self.delegate didTouchCommandButton:self.record isOnShow:YES];
 }
 
 -(void)layoutSubviews{
@@ -82,13 +108,22 @@
     }
     
     if( self.record.m_isOnShow ) {
-        [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
-        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green3.png"] forState:UIControlStateNormal];
+        [self.switchBtn setOn:YES animated:YES];
+//        [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+//        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green3.png"] forState:UIControlStateNormal];
     }
     else {
-        [self.rightButton setTitle:@"添加" forState:UIControlStateNormal];
-        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green1.png"] forState:UIControlStateNormal];
+        [self.switchBtn setOn:NO animated:YES];
+//        [self.rightButton setTitle:@"添加" forState:UIControlStateNormal];
+//        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green1.png"] forState:UIControlStateNormal];
     }
+    
+    CGFloat lineHeight = 0.5;
+    if ([[UIScreen mainScreen] scale] == 1)
+    {
+        lineHeight = 1;
+    }
+    [self.sepLineView setFrame:CGRectMake(20, self.contentView.frame.size.height-lineHeight, self.contentView.frame.size.width, lineHeight)];
 }
 
 

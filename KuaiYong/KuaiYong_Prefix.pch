@@ -5,7 +5,7 @@
 
 #define COLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-#define COLOR_COMMON_BACKGROUND [UIColor colorWithRed:0.203922 green:0.215686 blue:0.274510 alpha:1]
+#define COLOR_COMMON_BACKGROUND COLOR(89, 97, 145)
 
 #import "Tools.h"
 #import "AppRecord.h"

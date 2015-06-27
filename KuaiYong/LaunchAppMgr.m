@@ -226,6 +226,26 @@ static LaunchAppMgr *launchAppMgr = nil;
     return NO;
 }
 
+- (BOOL)deleteSaveLaunchItem:(AppRecord*)record {
+    for (NSMutableArray *page in self.saveLaunchArrays)
+    {
+        for( NSInteger kIndex = 0; kIndex< [page count]; kIndex++ ) {
+            MyLauncherItem* saveItem = [page objectAtIndex:kIndex];
+            AppRecord* saveRecord = saveItem.apprecord;
+            if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
+               && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {
+                [page removeObjectAtIndex:kIndex];
+                
+                [self saveLauncherItems:self.saveLaunchArrays];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:nil userInfo:nil];
+                
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 - (NSMutableArray*)getInstallApps {
     NSMutableArray* installArrays =  [[NSMutableArray alloc] init];
     for( NSInteger index = 0; index< [self.launchAppArrays count]; index++ ) {

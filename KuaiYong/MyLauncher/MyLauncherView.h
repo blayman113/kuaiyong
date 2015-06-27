@@ -56,6 +56,8 @@
 
 // Default for animation below is YES
 
+-(void)launcherItemChanged;
+
 -(void)setPages:(NSMutableArray *)pages animated:(BOOL)animated;
 -(void)setPages:(NSMutableArray *)pages numberOfImmovableItems:(NSInteger)items;
 -(void)setPages:(NSMutableArray *)pages numberOfImmovableItems:(NSInteger)items animated:(BOOL)animated;

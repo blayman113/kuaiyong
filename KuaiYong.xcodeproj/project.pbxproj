@@ -110,6 +110,13 @@
 		A7DC2A741B2C5B6E00D07F9F /* app_videos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7DC2A341B2C5B6E00D07F9F /* app_videos@2x.png */; };
 		A7DC2A751B2C5B6E00D07F9F /* app_weather.png in Resources */ = {isa = PBXBuildFile; fileRef = A7DC2A351B2C5B6E00D07F9F /* app_weather.png */; };
 		A7DC2A761B2C5B6E00D07F9F /* app_weather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7DC2A361B2C5B6E00D07F9F /* app_weather@2x.png */; };
+		A7E79D7B1B3E8653007F3D56 /* app_app.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D791B3E8653007F3D56 /* app_app.png */; };
+		A7E79D7C1B3E8653007F3D56 /* app_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D7A1B3E8653007F3D56 /* app_app@2x.png */; };
+		A7E79D7F1B3E8FB1007F3D56 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E79D7D1B3E8FB1007F3D56 /* AddressBook.framework */; };
+		A7E79D801B3E8FB1007F3D56 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E79D7E1B3E8FB1007F3D56 /* AddressBookUI.framework */; };
+		A7E79D841B3E9359007F3D56 /* EditLaunchAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */; };
+		A7E79D871B3EA7C3007F3D56 /* image_bottom_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */; };
+		A7E79D881B3EA7C3007F3D56 /* image_bottom_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */; };
 		A7FC51CA1B3C0F0D00D87EC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */; };
 		A7FC51D01B3C0F0D00D87EC4 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FC51CF1B3C0F0D00D87EC4 /* TodayViewController.m */; };
 		A7FC51D21B3C0F0D00D87EC4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FC51D11B3C0F0D00D87EC4 /* MainInterface.storyboard */; };
@@ -315,6 +322,14 @@
 		A7DC2A341B2C5B6E00D07F9F /* app_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_videos@2x.png"; sourceTree = "<group>"; };
 		A7DC2A351B2C5B6E00D07F9F /* app_weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_weather.png; sourceTree = "<group>"; };
 		A7DC2A361B2C5B6E00D07F9F /* app_weather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_weather@2x.png"; sourceTree = "<group>"; };
+		A7E79D791B3E8653007F3D56 /* app_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_app.png; path = SystemIcon/app_app.png; sourceTree = "<group>"; };
+		A7E79D7A1B3E8653007F3D56 /* app_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app_app@2x.png"; path = "SystemIcon/app_app@2x.png"; sourceTree = "<group>"; };
+		A7E79D7D1B3E8FB1007F3D56 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		A7E79D7E1B3E8FB1007F3D56 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		A7E79D821B3E9359007F3D56 /* EditLaunchAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLaunchAppViewController.h; sourceTree = "<group>"; };
+		A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLaunchAppViewController.m; sourceTree = "<group>"; };
+		A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_bottom_bg.png; sourceTree = "<group>"; };
+		A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_bottom_bg@2x.png"; sourceTree = "<group>"; };
 		A7FC51C71B3C0F0D00D87EC4 /* kuaiyongToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = kuaiyongToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A7FC51CD1B3C0F0D00D87EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -384,6 +399,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E79D7F1B3E8FB1007F3D56 /* AddressBook.framework in Frameworks */,
+				A7E79D801B3E8FB1007F3D56 /* AddressBookUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +461,7 @@
 		A7DC29B31B2C4C6B00D07F9F /* KuaiYong */ = {
 			isa = PBXGroup;
 			children = (
+				A7E79D811B3E92C7007F3D56 /* UI */,
 				A7FC51DA1B3CF79100D87EC4 /* KuaiYong.entitlements */,
 				A7D971451B318BBA00F8997D /* DBImageView */,
 				A7D971301B3023AA00F8997D /* DSNavigationBar */,
@@ -453,8 +471,6 @@
 				A7DC29B91B2C4C6B00D07F9F /* AppDelegate.m */,
 				A7DC29BB1B2C4C6B00D07F9F /* ViewController.h */,
 				A7DC29BC1B2C4C6B00D07F9F /* ViewController.m */,
-				A7D9713C1B315BEB00F8997D /* AddAppLaunchViewController.h */,
-				A7D9713D1B315BEB00F8997D /* AddAppLaunchViewController.m */,
 				A7DC29EF1B2C538900D07F9F /* ItemViewController.h */,
 				A7DC29F01B2C538900D07F9F /* ItemViewController.m */,
 				A7DC29C11B2C4C6B00D07F9F /* Images.xcassets */,
@@ -468,8 +484,6 @@
 				A7D9712A1B301A6F00F8997D /* UIHelper.m */,
 				A7D9713F1B316DA500F8997D /* LaunchAppMgr.h */,
 				A7D971401B316DA500F8997D /* LaunchAppMgr.m */,
-				A7D971421B317ECA00F8997D /* InstalledAppTableViewCell.h */,
-				A7D971431B317ECA00F8997D /* InstalledAppTableViewCell.m */,
 			);
 			path = KuaiYong;
 			sourceTree = "<group>";
@@ -508,6 +522,10 @@
 		A7DC29F51B2C5B6E00D07F9F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */,
+				A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */,
+				A7E79D791B3E8653007F3D56 /* app_app.png */,
+				A7E79D7A1B3E8653007F3D56 /* app_app@2x.png */,
 				A7D971521B329DAB00F8997D /* e_green1.png */,
 				A7D971531B329DAB00F8997D /* e_green1@2x.png */,
 				A7D971541B329DAB00F8997D /* e_green2.png */,
@@ -598,9 +616,24 @@
 			path = SystemIcon;
 			sourceTree = "<group>";
 		};
+		A7E79D811B3E92C7007F3D56 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A7D9713C1B315BEB00F8997D /* AddAppLaunchViewController.h */,
+				A7D9713D1B315BEB00F8997D /* AddAppLaunchViewController.m */,
+				A7D971421B317ECA00F8997D /* InstalledAppTableViewCell.h */,
+				A7D971431B317ECA00F8997D /* InstalledAppTableViewCell.m */,
+				A7E79D821B3E9359007F3D56 /* EditLaunchAppViewController.h */,
+				A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		A7FC51C81B3C0F0D00D87EC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7E79D7D1B3E8FB1007F3D56 /* AddressBook.framework */,
+				A7E79D7E1B3E8FB1007F3D56 /* AddressBookUI.framework */,
 				A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -827,15 +860,18 @@
 				A7DC2A401B2C5B6E00D07F9F /* feedback.png in Resources */,
 				A7DC2A501B2C5B6E00D07F9F /* app_appstore.png in Resources */,
 				A7DC2A601B2C5B6E00D07F9F /* app_mail.png in Resources */,
+				A7E79D871B3EA7C3007F3D56 /* image_bottom_bg.png in Resources */,
 				A7DC2A3E1B2C5B6E00D07F9F /* exit@2x.png in Resources */,
 				A7DC2A381B2C5B6E00D07F9F /* done@2x.png in Resources */,
 				A7DC2A5B1B2C5B6E00D07F9F /* app_ibooks@2x.png in Resources */,
 				A7DC2A591B2C5B6E00D07F9F /* app_gamecenter@2x.png in Resources */,
+				A7E79D881B3EA7C3007F3D56 /* image_bottom_bg@2x.png in Resources */,
 				A7DC2A511B2C5B6E00D07F9F /* app_appstore@2x.png in Resources */,
 				A7D9713A1B3032CA00F8997D /* quc_nav_back_pressed.png in Resources */,
 				A7DC2A631B2C5B6E00D07F9F /* app_maps@2x.png in Resources */,
 				A7DC2A521B2C5B6E00D07F9F /* app_calendar.png in Resources */,
 				A7D971391B3032CA00F8997D /* quc_nav_back_normal@2x.png in Resources */,
+				A7E79D7C1B3E8653007F3D56 /* app_app@2x.png in Resources */,
 				A7D9715D1B329DAB00F8997D /* e_green3@2x.png in Resources */,
 				A7D971591B329DAB00F8997D /* e_green1@2x.png in Resources */,
 				A7DC2A611B2C5B6E00D07F9F /* app_mail@2x.png in Resources */,
@@ -850,6 +886,7 @@
 				A7D971241B2ED23800F8997D /* SystemAppList.plist in Resources */,
 				A7DC2A3B1B2C5B6E00D07F9F /* edit@2x.png in Resources */,
 				A7DC2A3A1B2C5B6E00D07F9F /* edit.png in Resources */,
+				A7E79D7B1B3E8653007F3D56 /* app_app.png in Resources */,
 				A7DC2A461B2C5B6E00D07F9F /* icon_bg.png in Resources */,
 				A7DC2A6A1B2C5B6E00D07F9F /* app_phone.png in Resources */,
 				A7DC2A651B2C5B6E00D07F9F /* app_music@2x.png in Resources */,
@@ -931,6 +968,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7D9714F1B318BBA00F8997D /* DBImageRequest.m in Sources */,
+				A7E79D841B3E9359007F3D56 /* EditLaunchAppViewController.m in Sources */,
 				A7D9711F1B2EC7EE00F8997D /* AppRecord.m in Sources */,
 				A7D971441B317ECA00F8997D /* InstalledAppTableViewCell.m in Sources */,
 				A7DC29BD1B2C4C6B00D07F9F /* ViewController.m in Sources */,
@@ -1160,6 +1198,7 @@
 				A7FC51D71B3C0F0D00D87EC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

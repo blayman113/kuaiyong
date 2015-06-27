@@ -23,6 +23,7 @@
 
 - (void)addLauncherItem:(AppRecord*)record;
 - (BOOL)deleteLaunchItem:(MyLauncherItem*)item;
+- (BOOL)deleteSaveLaunchItem:(AppRecord*)record;
 
 - (void)saveLauncherItems:(NSMutableArray*)pages;
 

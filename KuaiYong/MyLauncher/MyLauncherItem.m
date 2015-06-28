@@ -37,6 +37,7 @@
 #pragma mark - Lifecycle
 
 -(id)initWithRecord:(AppRecord*)record{
+    self.itemWidth = 60;
     _apprecord = record;
     return [self initWithTitle:record.m_name
                          image:record.m_icon
@@ -83,7 +84,7 @@
 		[subview removeFromSuperview];
 	
 
-    NSInteger imageWidth = 60;
+    NSInteger imageWidth = self.itemWidth;
     
     UIImage *image = nil;
     
@@ -125,7 +126,6 @@
         itemImageHeight = dbImageView.bounds.size.height;
     }
 
-
     if(self.badge) {
         self.badge.frame = CGRectMake((itemImageX + itemImageWidth) - (self.badge.bounds.size.width - 6), 
                                       itemImageY-6, self.badge.bounds.size.width, self.badge.bounds.size.height);
@@ -134,9 +134,10 @@
     
 	if(deletable)
 	{
-		self.closeButton.frame = CGRectMake(itemImageX-10, itemImageY-15, 30, 30);
+		self.closeButton.frame = CGRectMake(itemImageX-10, itemImageY-15, 24, 24);
 		[self.closeButton setImage:[UIImage imageNamed:@"item_delete"] forState:UIControlStateNormal];
-		self.closeButton.backgroundColor = [UIColor clearColor];
+        self.closeButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.9];
+        self.closeButton.layer.cornerRadius = 12;
 		[self.closeButton addTarget:self action:@selector(closeItem:) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:self.closeButton];
 	}

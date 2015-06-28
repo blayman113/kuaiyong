@@ -14,8 +14,6 @@
 		A7D971271B300FE100F8997D /* item_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D971251B300FE100F8997D /* item_delete.png */; };
 		A7D971281B300FE100F8997D /* item_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D971261B300FE100F8997D /* item_delete@2x.png */; };
 		A7D9712B1B301A6F00F8997D /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D9712A1B301A6F00F8997D /* UIHelper.m */; };
-		A7D9712E1B30212500F8997D /* Theme-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D9712C1B30212500F8997D /* Theme-bg@2x.png */; };
-		A7D9712F1B30212500F8997D /* Theme-bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D9712D1B30212500F8997D /* Theme-bg@3x.png */; };
 		A7D971331B3023AA00F8997D /* DSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D971321B3023AA00F8997D /* DSNavigationBar.m */; };
 		A7D971381B3032CA00F8997D /* quc_nav_back_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D971341B3032CA00F8997D /* quc_nav_back_normal.png */; };
 		A7D971391B3032CA00F8997D /* quc_nav_back_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D971351B3032CA00F8997D /* quc_nav_back_normal@2x.png */; };
@@ -115,8 +113,12 @@
 		A7E79D7F1B3E8FB1007F3D56 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E79D7D1B3E8FB1007F3D56 /* AddressBook.framework */; };
 		A7E79D801B3E8FB1007F3D56 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E79D7E1B3E8FB1007F3D56 /* AddressBookUI.framework */; };
 		A7E79D841B3E9359007F3D56 /* EditLaunchAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */; };
-		A7E79D871B3EA7C3007F3D56 /* image_bottom_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */; };
-		A7E79D881B3EA7C3007F3D56 /* image_bottom_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */; };
+		A7E79D8B1B3FEB20007F3D56 /* item_delete1.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D891B3FEB20007F3D56 /* item_delete1.png */; };
+		A7E79D8C1B3FEB20007F3D56 /* item_delete@2x1.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D8A1B3FEB20007F3D56 /* item_delete@2x1.png */; };
+		A7E79D8F1B3FEEA1007F3D56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D8E1B3FEEA1007F3D56 /* SettingsViewController.m */; };
+		A7E79D921B3FEFAA007F3D56 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */; };
+		A7E79D951B3FF14F007F3D56 /* icon_arrow_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */; };
+		A7E79D961B3FF14F007F3D56 /* icon_arrow_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */; };
 		A7FC51CA1B3C0F0D00D87EC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */; };
 		A7FC51D01B3C0F0D00D87EC4 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FC51CF1B3C0F0D00D87EC4 /* TodayViewController.m */; };
 		A7FC51D21B3C0F0D00D87EC4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FC51D11B3C0F0D00D87EC4 /* MainInterface.storyboard */; };
@@ -206,8 +208,6 @@
 		A7D971261B300FE100F8997D /* item_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item_delete@2x.png"; sourceTree = "<group>"; };
 		A7D971291B301A6F00F8997D /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
 		A7D9712A1B301A6F00F8997D /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
-		A7D9712C1B30212500F8997D /* Theme-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Theme-bg@2x.png"; sourceTree = "<group>"; };
-		A7D9712D1B30212500F8997D /* Theme-bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Theme-bg@3x.png"; sourceTree = "<group>"; };
 		A7D971311B3023AA00F8997D /* DSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNavigationBar.h; sourceTree = "<group>"; };
 		A7D971321B3023AA00F8997D /* DSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNavigationBar.m; sourceTree = "<group>"; };
 		A7D971341B3032CA00F8997D /* quc_nav_back_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quc_nav_back_normal.png; sourceTree = "<group>"; };
@@ -328,8 +328,14 @@
 		A7E79D7E1B3E8FB1007F3D56 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		A7E79D821B3E9359007F3D56 /* EditLaunchAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLaunchAppViewController.h; sourceTree = "<group>"; };
 		A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLaunchAppViewController.m; sourceTree = "<group>"; };
-		A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_bottom_bg.png; sourceTree = "<group>"; };
-		A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_bottom_bg@2x.png"; sourceTree = "<group>"; };
+		A7E79D891B3FEB20007F3D56 /* item_delete1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item_delete1.png; sourceTree = "<group>"; };
+		A7E79D8A1B3FEB20007F3D56 /* item_delete@2x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item_delete@2x1.png"; sourceTree = "<group>"; };
+		A7E79D8D1B3FEEA1007F3D56 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		A7E79D8E1B3FEEA1007F3D56 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		A7E79D901B3FEFAA007F3D56 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
+		A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@2x.png"; sourceTree = "<group>"; };
+		A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@3x.png"; sourceTree = "<group>"; };
 		A7FC51C71B3C0F0D00D87EC4 /* kuaiyongToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = kuaiyongToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A7FC51CD1B3C0F0D00D87EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -522,8 +528,10 @@
 		A7DC29F51B2C5B6E00D07F9F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A7E79D851B3EA7C3007F3D56 /* image_bottom_bg.png */,
-				A7E79D861B3EA7C3007F3D56 /* image_bottom_bg@2x.png */,
+				A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */,
+				A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */,
+				A7E79D891B3FEB20007F3D56 /* item_delete1.png */,
+				A7E79D8A1B3FEB20007F3D56 /* item_delete@2x1.png */,
 				A7E79D791B3E8653007F3D56 /* app_app.png */,
 				A7E79D7A1B3E8653007F3D56 /* app_app@2x.png */,
 				A7D971521B329DAB00F8997D /* e_green1.png */,
@@ -536,8 +544,6 @@
 				A7D971351B3032CA00F8997D /* quc_nav_back_normal@2x.png */,
 				A7D971361B3032CA00F8997D /* quc_nav_back_pressed.png */,
 				A7D971371B3032CA00F8997D /* quc_nav_back_pressed@2x.png */,
-				A7D9712C1B30212500F8997D /* Theme-bg@2x.png */,
-				A7D9712D1B30212500F8997D /* Theme-bg@3x.png */,
 				A7D971251B300FE100F8997D /* item_delete.png */,
 				A7D971261B300FE100F8997D /* item_delete@2x.png */,
 				A7DC29F61B2C5B6E00D07F9F /* done.png */,
@@ -625,6 +631,10 @@
 				A7D971431B317ECA00F8997D /* InstalledAppTableViewCell.m */,
 				A7E79D821B3E9359007F3D56 /* EditLaunchAppViewController.h */,
 				A7E79D831B3E9359007F3D56 /* EditLaunchAppViewController.m */,
+				A7E79D8D1B3FEEA1007F3D56 /* SettingsViewController.h */,
+				A7E79D8E1B3FEEA1007F3D56 /* SettingsViewController.m */,
+				A7E79D901B3FEFAA007F3D56 /* SettingsTableViewCell.h */,
+				A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -822,19 +832,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7D971281B300FE100F8997D /* item_delete@2x.png in Resources */,
+				A7E79D8B1B3FEB20007F3D56 /* item_delete1.png in Resources */,
 				A7DC29C51B2C4C6B00D07F9F /* LaunchScreen.xib in Resources */,
 				A7DC2A6E1B2C5B6E00D07F9F /* app_reminders.png in Resources */,
 				A7DC2A4E1B2C5B6E00D07F9F /* settings@2x.png in Resources */,
 				A7DC2A441B2C5B6E00D07F9F /* help@2x.png in Resources */,
 				A7DC2A561B2C5B6E00D07F9F /* app_facetime.png in Resources */,
-				A7D9712F1B30212500F8997D /* Theme-bg@3x.png in Resources */,
+				A7E79D961B3FF14F007F3D56 /* icon_arrow_normal@3x.png in Resources */,
 				A7DC2A581B2C5B6E00D07F9F /* app_gamecenter.png in Resources */,
 				A7DC2A731B2C5B6E00D07F9F /* app_videos.png in Resources */,
 				A7DC2A571B2C5B6E00D07F9F /* app_facetime@2x.png in Resources */,
 				A7DC2A471B2C5B6E00D07F9F /* icon_bg@2x.png in Resources */,
 				A7DC2A5E1B2C5B6E00D07F9F /* app_itunes.png in Resources */,
 				A7DC2A621B2C5B6E00D07F9F /* app_maps.png in Resources */,
-				A7D9712E1B30212500F8997D /* Theme-bg@2x.png in Resources */,
 				A7DC2A681B2C5B6E00D07F9F /* app_passbook.png in Resources */,
 				A7DC2A711B2C5B6E00D07F9F /* app_safari@2x.png in Resources */,
 				A7DC2A6F1B2C5B6E00D07F9F /* app_reminders@2x.png in Resources */,
@@ -860,12 +870,10 @@
 				A7DC2A401B2C5B6E00D07F9F /* feedback.png in Resources */,
 				A7DC2A501B2C5B6E00D07F9F /* app_appstore.png in Resources */,
 				A7DC2A601B2C5B6E00D07F9F /* app_mail.png in Resources */,
-				A7E79D871B3EA7C3007F3D56 /* image_bottom_bg.png in Resources */,
 				A7DC2A3E1B2C5B6E00D07F9F /* exit@2x.png in Resources */,
 				A7DC2A381B2C5B6E00D07F9F /* done@2x.png in Resources */,
 				A7DC2A5B1B2C5B6E00D07F9F /* app_ibooks@2x.png in Resources */,
 				A7DC2A591B2C5B6E00D07F9F /* app_gamecenter@2x.png in Resources */,
-				A7E79D881B3EA7C3007F3D56 /* image_bottom_bg@2x.png in Resources */,
 				A7DC2A511B2C5B6E00D07F9F /* app_appstore@2x.png in Resources */,
 				A7D9713A1B3032CA00F8997D /* quc_nav_back_pressed.png in Resources */,
 				A7DC2A631B2C5B6E00D07F9F /* app_maps@2x.png in Resources */,
@@ -882,9 +890,11 @@
 				A7DC2A671B2C5B6E00D07F9F /* app_notes@2x.png in Resources */,
 				A7DC2A6D1B2C5B6E00D07F9F /* app_photos@2x.png in Resources */,
 				A7D9715A1B329DAB00F8997D /* e_green2.png in Resources */,
+				A7E79D8C1B3FEB20007F3D56 /* item_delete@2x1.png in Resources */,
 				A7DC2A641B2C5B6E00D07F9F /* app_music.png in Resources */,
 				A7D971241B2ED23800F8997D /* SystemAppList.plist in Resources */,
 				A7DC2A3B1B2C5B6E00D07F9F /* edit@2x.png in Resources */,
+				A7E79D951B3FF14F007F3D56 /* icon_arrow_normal@2x.png in Resources */,
 				A7DC2A3A1B2C5B6E00D07F9F /* edit.png in Resources */,
 				A7E79D7B1B3E8653007F3D56 /* app_app.png in Resources */,
 				A7DC2A461B2C5B6E00D07F9F /* icon_bg.png in Resources */,
@@ -978,8 +988,10 @@
 				A7D971221B2ECD6900F8997D /* Tools.m in Sources */,
 				A7DC29EB1B2C52F500D07F9F /* MyLauncherPageControl.m in Sources */,
 				A7DC29EC1B2C52F500D07F9F /* MyLauncherScrollView.m in Sources */,
+				A7E79D8F1B3FEEA1007F3D56 /* SettingsViewController.m in Sources */,
 				A7DC29E91B2C52F500D07F9F /* CustomBadge.m in Sources */,
 				A7DC29EA1B2C52F500D07F9F /* MyLauncherItem.m in Sources */,
+				A7E79D921B3FEFAA007F3D56 /* SettingsTableViewCell.m in Sources */,
 				A7D971331B3023AA00F8997D /* DSNavigationBar.m in Sources */,
 				A7D9713E1B315BEB00F8997D /* AddAppLaunchViewController.m in Sources */,
 				A7DC29ED1B2C52F500D07F9F /* MyLauncherView.m in Sources */,

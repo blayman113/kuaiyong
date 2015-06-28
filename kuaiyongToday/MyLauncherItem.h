@@ -52,6 +52,7 @@
 -(void)setDragging:(BOOL)flag;
 -(BOOL)dragging;
 -(BOOL)deletable;
+-(void)layoutBottomItem;
 
 -(BOOL)titleBoundToBottom;
 -(void)setTitleBoundToBottom:(BOOL)bind;

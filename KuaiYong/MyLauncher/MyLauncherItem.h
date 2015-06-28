@@ -46,6 +46,7 @@
 @property (nonatomic, retain) UIButton *closeButton;
 @property (nonatomic, retain) CustomBadge *badge;
 @property (nonatomic, strong) AppRecord* apprecord;
+@property (nonatomic, assign) NSInteger itemWidth;
 
 
 -(id)initWithRecord:(AppRecord*)record;
@@ -55,6 +56,7 @@
 -(void)setDragging:(BOOL)flag;
 -(BOOL)dragging;
 -(BOOL)deletable;
+-(void)layoutBottomItem;
 
 -(BOOL)titleBoundToBottom;
 -(void)setTitleBoundToBottom:(BOOL)bind;

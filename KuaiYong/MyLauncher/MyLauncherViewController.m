@@ -25,6 +25,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "EditLaunchAppViewController.h"
+#import "SettingsViewController.h"
 
 @interface MyLauncherViewController () <ABPeoplePickerNavigationControllerDelegate, UINavigationControllerDelegate>
 -(NSMutableArray *)loadLauncherItems;
@@ -32,6 +33,7 @@
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, assign) CGRect statusBarFrame;
 @property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIButton *leftButton;
 @property (nonatomic, assign) BOOL isEditing;
 @property (nonatomic, strong) ABPeoplePickerNavigationController* picker;
 @property (nonatomic, assign) BOOL isClickMessage;
@@ -84,14 +86,14 @@
 }
 
 - (void)initNavBtn{
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(0, 0, 60, 32);
-    leftButton.backgroundColor = [UIColor clearColor];
-    [leftButton setBackgroundImage:[UIHelper normalImageForReturnButtonWithSize:@"settings.png" toBtnSize:leftButton.frame.size] forState:UIControlStateNormal];
-    leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [leftButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.leftButton.frame = CGRectMake(0, 0, 60, 32);
+    self.leftButton.backgroundColor = [UIColor clearColor];
+    [self.leftButton setBackgroundImage:[UIHelper normalImageForReturnButtonWithSize:@"settings.png" toBtnSize:self.leftButton.frame.size] forState:UIControlStateNormal];
+    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.leftButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
     
     //right button
@@ -112,8 +114,7 @@
 
     CGRect rectBottom = CGRectMake(0, self.view.frame.size.height - btnHeight, self.view.frame.size.width, btnHeight);
     UIView* bottomView = [[UIView alloc] initWithFrame:rectBottom];
-    UIColor * color = [UIColor colorWithRed:(43/255.0) green:(45/255.0) blue:(66/255) alpha:1.0f];
-    [bottomView setBackgroundColor:COLOR(80, 87, 131)];
+    [bottomView setBackgroundColor:COLOR(81, 89, 133)];
     
     [self.view addSubview:bottomView];
 
@@ -123,6 +124,7 @@
     MyLauncherItem *phoneItem = [[MyLauncherItem alloc] initWithRecord:phoneRecord];
     phoneItem.frame = rectFrame;
 	phoneItem.delegate = self;
+//    phoneItem.itemWidth = 40;
     [phoneItem layoutItem];
     [phoneItem addTarget:self action:@selector(addContactApp) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:phoneItem];
@@ -132,6 +134,7 @@
     MyLauncherItem *msgItem = [[MyLauncherItem alloc] initWithRecord:msgRecord];
     msgItem.frame = rectFrame;
     msgItem.delegate = self;
+//    msgItem.itemWidth = 40;
     [msgItem layoutItem];
     [msgItem addTarget:self action:@selector(addMessageApp) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:msgItem];
@@ -141,6 +144,7 @@
     MyLauncherItem *appItem = [[MyLauncherItem alloc] initWithRecord:appRecord];
     appItem.frame = rectFrame;
     appItem.delegate = self;
+//    appItem.itemWidth = 40;
     [appItem layoutItem];
     [appItem addTarget:self action:@selector(addLaunchApp) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:appItem];
@@ -151,6 +155,10 @@
 }
 
 - (void)addContactApp{
+    if( self.isEditing){
+        [self.launcherView performSelector:@selector(endEditing) withObject:nil];
+    }
+    
     self.isClickMessage = NO;
     self.picker = nil;
     if(!self.picker){
@@ -163,6 +171,10 @@
 }
 
 - (void)addMessageApp{
+    if( self.isEditing){
+        [self.launcherView performSelector:@selector(endEditing) withObject:nil];
+    }
+
     self.isClickMessage = YES;
     self.picker = nil;
     if(!self.picker){
@@ -175,13 +187,19 @@
 }
 
 - (void)addLaunchApp{
+    if( self.isEditing){
+        [self.launcherView performSelector:@selector(endEditing) withObject:nil];
+    }
+
     AddAppLaunchViewController* addAppVC = [[AddAppLaunchViewController alloc] init];
     addAppVC.view.frame = self.view.frame;
     [self.navigationController pushViewController:addAppVC animated:YES];
 }
 
 - (void)openSettings {
-    
+    SettingsViewController* settingsVC = [[SettingsViewController alloc] init];
+    settingsVC.view.frame = self.view.frame;
+    [self.navigationController pushViewController:settingsVC animated:YES];
 }
 
 - (void)enterEditing {
@@ -260,11 +278,13 @@
 
 -(void)launcherViewDidBeginEditing:(id)sender {
     self.isEditing = YES;
+    self.leftButton.enabled = NO;
     [self.rightButton setImage:[UIImage imageNamed:@"done"] forState:UIControlStateNormal];
 }
 
 -(void)launcherViewDidEndEditing:(id)sender {
     self.isEditing = NO;
+    self.leftButton.enabled = YES;
     [self.rightButton setImage:[UIImage imageNamed:@"edit"] forState:UIControlStateNormal];
 }
 

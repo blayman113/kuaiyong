@@ -119,6 +119,7 @@
 		A7E79D921B3FEFAA007F3D56 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */; };
 		A7E79D951B3FF14F007F3D56 /* icon_arrow_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */; };
 		A7E79D961B3FF14F007F3D56 /* icon_arrow_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */; };
+		A7E79D9A1B400F7D007F3D56 /* TodayImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D991B400F7D007F3D56 /* TodayImages.xcassets */; };
 		A7FC51CA1B3C0F0D00D87EC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */; };
 		A7FC51D01B3C0F0D00D87EC4 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FC51CF1B3C0F0D00D87EC4 /* TodayViewController.m */; };
 		A7FC51D21B3C0F0D00D87EC4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FC51D11B3C0F0D00D87EC4 /* MainInterface.storyboard */; };
@@ -336,6 +337,7 @@
 		A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
 		A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@2x.png"; sourceTree = "<group>"; };
 		A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@3x.png"; sourceTree = "<group>"; };
+		A7E79D991B400F7D007F3D56 /* TodayImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TodayImages.xcassets; sourceTree = "<group>"; };
 		A7FC51C71B3C0F0D00D87EC4 /* kuaiyongToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = kuaiyongToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A7FC51CD1B3C0F0D00D87EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -479,8 +481,8 @@
 				A7DC29BC1B2C4C6B00D07F9F /* ViewController.m */,
 				A7DC29EF1B2C538900D07F9F /* ItemViewController.h */,
 				A7DC29F01B2C538900D07F9F /* ItemViewController.m */,
-				A7DC29C11B2C4C6B00D07F9F /* Images.xcassets */,
 				A7DC29C31B2C4C6B00D07F9F /* LaunchScreen.xib */,
+				A7DC29C11B2C4C6B00D07F9F /* Images.xcassets */,
 				A7DC29B41B2C4C6B00D07F9F /* Supporting Files */,
 				A7D9711D1B2EC7EE00F8997D /* AppRecord.h */,
 				A7D9711E1B2EC7EE00F8997D /* AppRecord.m */,
@@ -652,6 +654,7 @@
 		A7FC51CB1B3C0F0D00D87EC4 /* kuaiyongToday */ = {
 			isa = PBXGroup;
 			children = (
+				A7E79D991B400F7D007F3D56 /* TodayImages.xcassets */,
 				A7FC523E1B3D3BE300D87EC4 /* widget_btn_gray_empty.png */,
 				A7FC523F1B3D3BE300D87EC4 /* widget_btn_gray_empty@3x.png */,
 				A7FC52401B3D3BE300D87EC4 /* widget_btn_gray_empty@2x.png */,
@@ -943,6 +946,7 @@
 				A7FC52411B3D3BE300D87EC4 /* widget_btn_gray_empty.png in Resources */,
 				A7FC52321B3D022C00D87EC4 /* app_phone@2x.png in Resources */,
 				A7FC52351B3D022C00D87EC4 /* app_reminders.png in Resources */,
+				A7E79D9A1B400F7D007F3D56 /* TodayImages.xcassets in Resources */,
 				A7FC52271B3D022C00D87EC4 /* app_mail.png in Resources */,
 				A7FC52171B3D022C00D87EC4 /* app_appstore.png in Resources */,
 				A7FC52301B3D022C00D87EC4 /* app_passbook@2x.png in Resources */,
@@ -1157,6 +1161,7 @@
 		A7FC51D61B3C0F0D00D87EC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = kuaiyongToday/kuaiyongToday.entitlements;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1173,6 +1178,7 @@
 		A7FC51D71B3C0F0D00D87EC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = kuaiyongToday/kuaiyongToday.entitlements;
 				INFOPLIST_FILE = kuaiyongToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

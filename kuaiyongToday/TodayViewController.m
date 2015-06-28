@@ -83,7 +83,7 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
     
     NSInteger curRowCount = (itemsCount%4==0)?itemsCount/4:(itemsCount/4+1);
     
-    CGRect rectBtn = CGRectMake((nScreenWidth-130)/2, curRowCount*92 + (92-36)/2, 130, 36);
+    CGRect rectBtn = CGRectMake((nScreenWidth-130)/2, curRowCount*92 + (92-36)/2-6, 130, 36);
     UIButton* editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     editBtn.frame = rectBtn;
     [editBtn setTitle:@"编辑" forState:UIControlStateNormal];

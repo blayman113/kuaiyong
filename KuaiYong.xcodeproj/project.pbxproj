@@ -120,6 +120,8 @@
 		A7E79D951B3FF14F007F3D56 /* icon_arrow_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */; };
 		A7E79D961B3FF14F007F3D56 /* icon_arrow_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */; };
 		A7E79D9A1B400F7D007F3D56 /* TodayImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D991B400F7D007F3D56 /* TodayImages.xcassets */; };
+		A7E79D9D1B40E802007F3D56 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E79D9C1B40E802007F3D56 /* AboutViewController.m */; };
+		A7E79D9F1B40EFEC007F3D56 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E79D9E1B40EFEC007F3D56 /* app_icon.png */; };
 		A7FC51CA1B3C0F0D00D87EC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */; };
 		A7FC51D01B3C0F0D00D87EC4 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FC51CF1B3C0F0D00D87EC4 /* TodayViewController.m */; };
 		A7FC51D21B3C0F0D00D87EC4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FC51D11B3C0F0D00D87EC4 /* MainInterface.storyboard */; };
@@ -338,6 +340,9 @@
 		A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@2x.png"; sourceTree = "<group>"; };
 		A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_normal@3x.png"; sourceTree = "<group>"; };
 		A7E79D991B400F7D007F3D56 /* TodayImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TodayImages.xcassets; sourceTree = "<group>"; };
+		A7E79D9B1B40E802007F3D56 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		A7E79D9C1B40E802007F3D56 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		A7E79D9E1B40EFEC007F3D56 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
 		A7FC51C71B3C0F0D00D87EC4 /* kuaiyongToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = kuaiyongToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FC51C91B3C0F0D00D87EC4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A7FC51CD1B3C0F0D00D87EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -530,6 +535,7 @@
 		A7DC29F51B2C5B6E00D07F9F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A7E79D9E1B40EFEC007F3D56 /* app_icon.png */,
 				A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */,
 				A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */,
 				A7E79D891B3FEB20007F3D56 /* item_delete1.png */,
@@ -637,6 +643,8 @@
 				A7E79D8E1B3FEEA1007F3D56 /* SettingsViewController.m */,
 				A7E79D901B3FEFAA007F3D56 /* SettingsTableViewCell.h */,
 				A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */,
+				A7E79D9B1B40E802007F3D56 /* AboutViewController.h */,
+				A7E79D9C1B40E802007F3D56 /* AboutViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -888,6 +896,7 @@
 				A7DC2A611B2C5B6E00D07F9F /* app_mail@2x.png in Resources */,
 				A7DC2A371B2C5B6E00D07F9F /* done.png in Resources */,
 				A7DC2A751B2C5B6E00D07F9F /* app_weather.png in Resources */,
+				A7E79D9F1B40EFEC007F3D56 /* app_icon.png in Resources */,
 				A7D971381B3032CA00F8997D /* quc_nav_back_normal.png in Resources */,
 				A7D9715C1B329DAB00F8997D /* e_green3.png in Resources */,
 				A7DC2A671B2C5B6E00D07F9F /* app_notes@2x.png in Resources */,
@@ -992,6 +1001,7 @@
 				A7D971221B2ECD6900F8997D /* Tools.m in Sources */,
 				A7DC29EB1B2C52F500D07F9F /* MyLauncherPageControl.m in Sources */,
 				A7DC29EC1B2C52F500D07F9F /* MyLauncherScrollView.m in Sources */,
+				A7E79D9D1B40E802007F3D56 /* AboutViewController.m in Sources */,
 				A7E79D8F1B3FEEA1007F3D56 /* SettingsViewController.m in Sources */,
 				A7DC29E91B2C52F500D07F9F /* CustomBadge.m in Sources */,
 				A7DC29EA1B2C52F500D07F9F /* MyLauncherItem.m in Sources */,

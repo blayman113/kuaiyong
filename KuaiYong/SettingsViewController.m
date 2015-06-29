@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "UIHelper.h"
 #import "SettingsTableViewCell.h"
+#import "AboutViewController.h"
 
 @interface SettingsViewController () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
@@ -112,6 +113,12 @@
         case 0:
             break;
             
+        case 1:
+        {
+            
+        }
+            break;
+            
         case 2:
         {
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -125,6 +132,20 @@
         }
             break;
             
+        case 3:
+        {
+            NSURL *url = [NSURL URLWithString:URL_SCORE];
+            [[UIApplication sharedApplication] openURL:url];
+        }
+            break;
+            
+        case 4:
+        {
+            AboutViewController* aboutVC = [[AboutViewController alloc] init];
+            aboutVC.view.frame = self.view.frame;
+            [self.navigationController pushViewController:aboutVC animated:YES];
+        }
+            break;
         default:
             break;
     }

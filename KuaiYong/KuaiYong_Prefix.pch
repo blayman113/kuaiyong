@@ -12,3 +12,5 @@
 #import "AppRecord.h"
 
 #define kLauncherItemChangedNotification @"LauncherItemChangedNotification"
+
+#define URL_SCORE                            @"http://itunes.apple.com/app/id942885362?mt=8"

@@ -14,3 +14,4 @@
 #define kLauncherItemChangedNotification @"LauncherItemChangedNotification"
 
 #define URL_SCORE                            @"http://itunes.apple.com/app/id942885362?mt=8"
+#define URL_APPSTORE_APP                     @"http://itunes.apple.com/app/id942885362"

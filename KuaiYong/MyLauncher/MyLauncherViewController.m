@@ -82,6 +82,7 @@
 }
 
 - (void)launcherItemChangedNotification:(NSNotification *)aNotification {
+    [self.launcherView setPages:[self loadLauncherItems]];
     [self.launcherView performSelector:@selector(launcherItemChanged) withObject:nil];
 }
 
@@ -159,6 +160,12 @@
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
     }
     
+    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
+    if( addItemCount >= 16) {
+        [self cannotAddApp];
+        return;
+    }
+
     self.isClickMessage = NO;
     self.picker = nil;
     if(!self.picker){
@@ -170,11 +177,22 @@
     [self presentViewController:self.picker animated:YES completion:nil];
 }
 
+- (void)cannotAddApp {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"添加启动器数目已满" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+}
+
 - (void)addMessageApp{
     if( self.isEditing){
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
     }
-
+    
+    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
+    if( addItemCount >= 16) {
+        [self cannotAddApp];
+        return;
+    }
+    
     self.isClickMessage = YES;
     self.picker = nil;
     if(!self.picker){
@@ -189,6 +207,12 @@
 - (void)addLaunchApp{
     if( self.isEditing){
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
+    }
+    
+    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
+    if( addItemCount >= 16) {
+        [self cannotAddApp];
+        return;
     }
 
     AddAppLaunchViewController* addAppVC = [[AddAppLaunchViewController alloc] init];

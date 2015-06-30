@@ -15,7 +15,6 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
 
 @property (nonatomic, strong) NSMutableArray* launchAppArrays;
 @property (nonatomic, strong) NSMutableArray* systemAppArrays;
-@property (nonatomic, strong) NSMutableArray* saveLaunchArrays; //添加显示的数组
 @end
 
 @implementation LaunchAppMgr
@@ -201,6 +200,7 @@ static LaunchAppMgr *launchAppMgr = nil;
 }
 
 - (void)addLauncherItem:(AppRecord*)record {
+    record.m_isOnShow = YES;
     MyLauncherItem* item = [[MyLauncherItem alloc ] initWithRecord:record];
     NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
     [savedPage addObject:item];
@@ -227,6 +227,7 @@ static LaunchAppMgr *launchAppMgr = nil;
 }
 
 - (BOOL)deleteSaveLaunchItem:(AppRecord*)record {
+    record.m_isOnShow = NO;
     for (NSMutableArray *page in self.saveLaunchArrays)
     {
         for( NSInteger kIndex = 0; kIndex< [page count]; kIndex++ ) {

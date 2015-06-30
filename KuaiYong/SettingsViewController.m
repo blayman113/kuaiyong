@@ -10,6 +10,11 @@
 #import "UIHelper.h"
 #import "SettingsTableViewCell.h"
 #import "AboutViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
 
 @interface SettingsViewController () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
@@ -107,6 +112,68 @@
     return cell;
 }
 
+- (void)showShareView {
+    
+    //定义菜单分享列表
+    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeSinaWeibo, ShareTypeWeixiSession, ShareTypeWeixiTimeline,ShareTypeWeixiFav,ShareTypeQQ, ShareTypeQQSpace,nil];
+    
+    UIImage *shareImage = [UIImage imageNamed:@"app_icon.png"];
+    
+    NSString* strText = [NSString stringWithFormat:@"在通知栏轻轻一按，便与好友打电话，发短信;启动最常用的应用程序，你也来用吧！从这儿%@下载！",URL_APPSTORE_APP];
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:strText
+                                       defaultContent:strText
+                                                image:[ShareSDK pngImageWithImage:shareImage]
+                                                title:@"快用-通知栏小工具"
+                                                  url:URL_APPSTORE_APP
+                                          description:strText
+                                            mediaType:SSPublishContentMediaTypeNews];
+ 
+    //定制微信好友内容
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+                                         content:strText
+                                           title:@"快用-通知栏小工具"
+                                             url:URL_APPSTORE_APP
+                                           image:[ShareSDK pngImageWithImage:shareImage]
+                                    musicFileUrl:INHERIT_VALUE
+                                         extInfo:nil
+                                        fileData:nil
+                                    emoticonData:nil];
+    
+    //定制微信朋友圈内容
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                          content:strText
+                                            title: strText
+                                              url:URL_APPSTORE_APP
+                                            image:[ShareSDK pngImageWithImage:shareImage]
+                                     musicFileUrl:nil
+                                          extInfo:nil
+                                         fileData:nil
+                                     emoticonData:nil];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:NO
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
@@ -115,7 +182,7 @@
             
         case 1:
         {
-            
+            [self showShareView];
         }
             break;
             

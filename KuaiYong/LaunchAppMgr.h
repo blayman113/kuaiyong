@@ -11,6 +11,8 @@
 
 @interface LaunchAppMgr : NSObject
 
+@property (nonatomic, strong) NSMutableArray* saveLaunchArrays; //添加显示的数组
+
 + (instancetype)sharedManager;
 
 - (void)initalize;

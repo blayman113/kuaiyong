@@ -155,15 +155,24 @@
     return nil;
 }
 
+- (void)cannotAddApp {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"添加启动器数目已满" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+}
+
 - (void)didTouchCommandButton:(AppRecord*)record isOnShow:(BOOL)isOnShow {
     if( isOnShow ) {
+        NSInteger addItemCount = [[[LaunchAppMgr sharedManager].saveLaunchArrays objectAtIndex:0] count];
+        if( addItemCount >= 16) {
+            [self cannotAddApp];
+            [self.tableView reloadData];
+        }
+        else {
          [[LaunchAppMgr sharedManager] addLauncherItem:record];
+        }
     }
     else {
          [[LaunchAppMgr sharedManager] deleteSaveLaunchItem:record];
-       
-//        [self actionTouchBackButton:nil];
-        
     }
 }
 

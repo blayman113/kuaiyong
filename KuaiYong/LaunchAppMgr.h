@@ -23,7 +23,7 @@
 
 - (BOOL) launchAppItem:(MyLauncherItem*)item;
 
-- (void)addLauncherItem:(AppRecord*)record;
+- (void)addLauncherItem:(MyLauncherItem*)item;
 - (BOOL)deleteLaunchItem:(MyLauncherItem*)item;
 - (BOOL)deleteSaveLaunchItem:(AppRecord*)record;
 

@@ -25,28 +25,6 @@
 {
     [super loadView];
     self.title = @"快用";
-    
-    [[self appControllers] setObject:[ItemViewController class] forKey:@"ItemViewController"];
-  
-    //Add your view controllers here to be picked up by the launcher; remember to import them above
-    //[[self appControllers] setObject:[MyCustomViewController class] forKey:@"MyCustomViewController"];
-    //[[self appControllers] setObject:[MyOtherCustomViewController class] forKey:@"MyOtherCustomViewController"];
-    
-    if(![self hasSavedLauncherItems])
-    {
-//        [self.launcherView setPages:[NSMutableArray arrayWithObjects:defaultArray, nil]];
-
-        // Set number of immovable items below; only set it when you are setting the pages as the
-        // user may still be able to delete these items and setting this then will cause movable
-        // items to become immovable.
-        // [self.launcherView setNumberOfImmovableItems:1];
-        
-        // Or uncomment the line below to disable editing (moving/deleting) completely!
-        // [self.launcherView setEditingAllowed:NO];
-    }
-    
-    // Set badge text for a MyLauncherItem using it's setBadgeText: method
-//    [(MyLauncherItem *)[[[self.launcherView pages] objectAtIndex:0] objectAtIndex:0] setBadgeText:@"4"];
 }
 
 - (void)viewDidLoad {

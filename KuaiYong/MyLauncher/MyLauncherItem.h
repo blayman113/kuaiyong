@@ -65,4 +65,6 @@
 -(void)setBadgeText:(NSString *)text;
 -(void)setCustomBadge:(CustomBadge *)customBadge;
 
+-(void)closeItem:(id)sender;
+
 @end

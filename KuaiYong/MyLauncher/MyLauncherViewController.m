@@ -43,7 +43,6 @@
 
 @synthesize launcherNavigationController = _launcherNavigationController;
 @synthesize launcherView = _launcherView;
-@synthesize appControllers = _appControllers;
 @synthesize overlayView = _overlayView;
 @synthesize currentViewController = _currentViewController;
 @synthesize statusBarFrame = _statusBarFrame;
@@ -52,7 +51,7 @@
 
 -(id)init {
 	if((self = [super init])) { 
-		self.title = @"myLauncher";
+		self.title = @"快用";
 	}
 	return self;
 }
@@ -63,13 +62,11 @@
 	[self setLauncherView:[[MyLauncherView alloc] initWithFrame:self.view.bounds]];
 	[self.launcherView setBackgroundColor:COLOR_COMMON_BACKGROUND];
 	[self.launcherView setDelegate:self];
-	self.view = self.launcherView;
 	
     [self.launcherView setPages:[self loadLauncherItems]];
-    [self.launcherView setNumberOfImmovableItems:[(NSNumber *)[Tools retrieveFromUserDefaults:@"myLauncherViewImmovable"] intValue]];
     
-    [self setAppControllers:[[NSMutableDictionary alloc] init]];
     [self setStatusBarFrame:[[UIApplication sharedApplication] statusBarFrame]];
+    self.view = self.launcherView;
     
     self.isEditing = NO;
     
@@ -82,8 +79,9 @@
 }
 
 - (void)launcherItemChangedNotification:(NSNotification *)aNotification {
-    [self.launcherView setPages:[self loadLauncherItems]];
-    [self.launcherView performSelector:@selector(launcherItemChanged) withObject:nil];
+    [self.launcherView addLaunchItem:aNotification.object];
+//    [self.launcherView setPages:[self loadLauncherItems]];
+//    [self.launcherView performSelector:@selector(launcherItemChanged) withObject:aNotification.object];
 }
 
 - (void)initNavBtn{
@@ -160,7 +158,7 @@
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
     }
     
-    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
+    NSInteger addItemCount = [self.launcherView.pages count];
     if( addItemCount >= 16) {
         [self cannotAddApp];
         return;
@@ -187,7 +185,7 @@
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
     }
     
-    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
+    NSInteger addItemCount = [self.launcherView.pages count];
     if( addItemCount >= 16) {
         [self cannotAddApp];
         return;
@@ -209,12 +207,6 @@
         [self.launcherView performSelector:@selector(endEditing) withObject:nil];
     }
     
-    NSInteger addItemCount = [[self.launcherView.pages objectAtIndex:0] count];
-    if( addItemCount >= 16) {
-        [self cannotAddApp];
-        return;
-    }
-
     AddAppLaunchViewController* addAppVC = [[AddAppLaunchViewController alloc] init];
     addAppVC.view.frame = self.view.frame;
     [self.navigationController pushViewController:addAppVC animated:YES];
@@ -376,7 +368,6 @@
 
 -(void)clearSavedLauncherItems {
     [Tools saveToUserDefaults:nil key:@"myLauncherView"];
-    [Tools saveToUserDefaults:nil key:@"myLauncherViewImmovable"];
 }
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate

@@ -110,7 +110,7 @@
 - (void)editOK {
     NSString* urlScheme = [NSString stringWithFormat:@"%@%@", self.scheme, self.value];
     AppRecord* record = [AppRecord initAppRecord:self.imageName toName:self.nameField.text toScheme:urlScheme isSystemApp:YES isPrefsRoot:YES];
-    [[LaunchAppMgr sharedManager] addLauncherItem:record];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:record userInfo:nil];
     [self actionTouchBackButton:nil];
 }
 

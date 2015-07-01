@@ -27,7 +27,6 @@
 
 @property (nonatomic, strong) UINavigationController *launcherNavigationController;
 @property (nonatomic, strong) MyLauncherView *launcherView;
-@property (nonatomic, strong) NSMutableDictionary *appControllers;
 
 -(BOOL)hasSavedLauncherItems;
 -(void)clearSavedLauncherItems;

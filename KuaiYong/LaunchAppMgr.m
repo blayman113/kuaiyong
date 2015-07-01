@@ -112,56 +112,47 @@ static LaunchAppMgr *launchAppMgr = nil;
 }
 
 - (void)loadSaveLanuchItems {
-    NSArray *savedPages = (NSArray *)[Tools retrieveFromUserDefaults:@"myLauncherView"];
-    if(savedPages) {
-        for (NSArray *page in savedPages)
+    NSArray *page = (NSArray *)[Tools retrieveFromUserDefaults:@"myLauncherView"];
+    if(page) {
+        for(NSDictionary *item in page)
         {
-            NSMutableArray *savedPage = [[NSMutableArray alloc] init];
-            for(NSDictionary *item in page)
-            {
-                NSString* title = [item objectForKey:@"title"];
-                NSString* image = [item objectForKey:@"image"];
-                NSString* targetTitle = [item objectForKey:@"scheme"];
-                BOOL isSystemApp = [[item objectForKey:@"isSystemApp"] boolValue];
-                BOOL isPrefsRoot = [[item objectForKey:@"isPrefsRoot"] boolValue];
-                
-                NSString* formatScheme = targetTitle;
-                if( !isPrefsRoot ) {
-                    formatScheme = [self formatAppUrlScheme:targetTitle];
-                }
-                
-                AppRecord* calendarRecord = [AppRecord initAppRecord:image toName:title toScheme:targetTitle isSystemApp:isSystemApp isPrefsRoot:isPrefsRoot];
-                MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
-                if( isSystemApp ) {
-                    [savedPage addObject:calendarItem];
-                }
-                else if([Tools checkAppInstalled:formatScheme]) {
-                    [savedPage addObject:calendarItem];
-                }
+            NSString* title = [item objectForKey:@"title"];
+            NSString* image = [item objectForKey:@"image"];
+            NSString* targetTitle = [item objectForKey:@"scheme"];
+            BOOL isSystemApp = [[item objectForKey:@"isSystemApp"] boolValue];
+            BOOL isPrefsRoot = [[item objectForKey:@"isPrefsRoot"] boolValue];
+            
+            NSString* formatScheme = targetTitle;
+            if( !isPrefsRoot ) {
+                formatScheme = [self formatAppUrlScheme:targetTitle];
             }
             
-            [self.saveLaunchArrays addObject:savedPage];
+            AppRecord* calendarRecord = [AppRecord initAppRecord:image toName:title toScheme:targetTitle isSystemApp:isSystemApp isPrefsRoot:isPrefsRoot];
+            MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
+            if( isSystemApp ) {
+                [self.saveLaunchArrays addObject:calendarItem];
+            }
+            else if([Tools checkAppInstalled:formatScheme]) {
+                [self.saveLaunchArrays addObject:calendarItem];
+            }
         }
     }
     else {
-        NSMutableArray *savedPage = [[NSMutableArray alloc] init];
         AppRecord* calendarRecord = [AppRecord initAppRecord:@"app_calendar.png" toName:@"日历" toScheme:@"calshow" isSystemApp:YES isPrefsRoot:NO];
         MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
-        [savedPage addObject:calendarItem];
+        [self.saveLaunchArrays addObject:calendarItem];
         
         AppRecord* photoRecord = [AppRecord initAppRecord:@"app_photos.png" toName:@"照片" toScheme:@"photos-redirect" isSystemApp:YES isPrefsRoot:NO];
         MyLauncherItem* photoItem = [[MyLauncherItem alloc] initWithRecord:photoRecord];
-        [savedPage addObject:photoItem];
+        [self.saveLaunchArrays addObject:photoItem];
         
         AppRecord* notesRecord = [AppRecord initAppRecord:@"app_reminders" toName:@"提醒事项" toScheme:@"x-apple-reminder" isSystemApp:YES isPrefsRoot:NO];
         MyLauncherItem* notesItem = [[MyLauncherItem alloc] initWithRecord:notesRecord];
-        [savedPage addObject:notesItem];
+        [self.saveLaunchArrays addObject:notesItem];
         
         AppRecord* weatherRecord = [AppRecord initAppRecord:@"app_safari.png" toName:@"Safari" toScheme:@"http://baidu.com" isSystemApp:YES isPrefsRoot:YES];
         MyLauncherItem* weatherItem = [[MyLauncherItem alloc] initWithRecord:weatherRecord];
-        [savedPage addObject:weatherItem];
-        
-        [self.saveLaunchArrays addObject:savedPage];
+        [self.saveLaunchArrays addObject:weatherItem];
         
         [self saveLauncherItems:self.saveLaunchArrays];
     }
@@ -174,22 +165,16 @@ static LaunchAppMgr *launchAppMgr = nil;
 - (void)saveLauncherItems:(NSMutableArray*)pages {
     NSMutableArray *pagesToSave = [[NSMutableArray alloc] init];
     
-    for(NSArray *page in pages)
+    for(MyLauncherItem *item in pages)
     {
-        NSMutableArray *pageToSave = [[NSMutableArray alloc] init];
+        NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
+        [itemToSave setObject:item.apprecord.m_name forKey:@"title"];
+        [itemToSave setObject:item.apprecord.m_icon forKey:@"image"];
+        [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isSystemApp] forKey:@"isSystemApp"];
+        [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isPrefsRoot] forKey:@"isPrefsRoot"];
+        [itemToSave setObject:item.apprecord.m_scheme forKey:@"scheme"];
         
-        for(MyLauncherItem *item in page)
-        {
-            NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
-            [itemToSave setObject:item.apprecord.m_name forKey:@"title"];
-            [itemToSave setObject:item.apprecord.m_icon forKey:@"image"];
-            [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isSystemApp] forKey:@"isSystemApp"];
-            [itemToSave setObject:[NSString stringWithFormat:@"%d", item.apprecord.m_isPrefsRoot] forKey:@"isPrefsRoot"];
-            [itemToSave setObject:item.apprecord.m_scheme forKey:@"scheme"];
-            
-            [pageToSave addObject:itemToSave];
-        }
-        [pagesToSave addObject:pageToSave];
+        [pagesToSave addObject:itemToSave];
     }
     
     [Tools saveToUserDefaults:pagesToSave key:@"myLauncherView"];
@@ -199,49 +184,35 @@ static LaunchAppMgr *launchAppMgr = nil;
     [shareUserDefault synchronize];
 }
 
-- (void)addLauncherItem:(AppRecord*)record {
-    record.m_isOnShow = YES;
-    MyLauncherItem* item = [[MyLauncherItem alloc ] initWithRecord:record];
-    NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
-    [savedPage addObject:item];
+- (void)addLauncherItem:(MyLauncherItem*)item {
+    [self.saveLaunchArrays addObject:item];
     [self saveLauncherItems:self.saveLaunchArrays];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:nil userInfo:nil];
 }
 
 - (BOOL)deleteLaunchItem:(MyLauncherItem*)item {
-    for (NSMutableArray *page in self.saveLaunchArrays)
+    int i = 0;
+    for (MyLauncherItem *aitem in self.saveLaunchArrays)
     {
-        int i = 0;
-        for (MyLauncherItem *aitem in page)
+        if(aitem == item)
         {
-            if(aitem == item)
-            {
-                [page removeObjectAtIndex:i];
-                return YES;
-            }
-            i++;
+            [self.saveLaunchArrays removeObjectAtIndex:i];
+            return YES;
         }
+        i++;
     }
     return NO;
 }
 
 - (BOOL)deleteSaveLaunchItem:(AppRecord*)record {
     record.m_isOnShow = NO;
-    for (NSMutableArray *page in self.saveLaunchArrays)
-    {
-        for( NSInteger kIndex = 0; kIndex< [page count]; kIndex++ ) {
-            MyLauncherItem* saveItem = [page objectAtIndex:kIndex];
-            AppRecord* saveRecord = saveItem.apprecord;
-            if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
-               && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {
-                [page removeObjectAtIndex:kIndex];
-                
-                [self saveLauncherItems:self.saveLaunchArrays];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:nil userInfo:nil];
-                
-                return YES;
-            }
+    
+    for( NSInteger kIndex = 0; kIndex< [self.saveLaunchArrays count]; kIndex++ ) {
+        MyLauncherItem* saveItem = [self.saveLaunchArrays objectAtIndex:kIndex];
+        AppRecord* saveRecord = saveItem.apprecord;
+        if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
+           && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {
+            [saveItem closeItem:nil];
+            return YES;
         }
     }
     return NO;
@@ -258,9 +229,8 @@ static LaunchAppMgr *launchAppMgr = nil;
         
         BOOL isOnShow = NO;
         if( [self.saveLaunchArrays count]>0 ) {
-            NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
-            for( NSInteger kIndex = 0; kIndex< [savedPage count]; kIndex++ ) {
-                MyLauncherItem* saveItem = [savedPage objectAtIndex:kIndex];
+            for( NSInteger kIndex = 0; kIndex< [self.saveLaunchArrays count]; kIndex++ ) {
+                MyLauncherItem* saveItem = [self.saveLaunchArrays objectAtIndex:kIndex];
                 AppRecord* saveRecord = saveItem.apprecord;
                 if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
                    && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {
@@ -268,10 +238,10 @@ static LaunchAppMgr *launchAppMgr = nil;
                     break;
                 }
             }
-        }
-        record.m_isOnShow = isOnShow;
-        if( [Tools checkAppInstalled:formatScheme] ) {
-            [installArrays addObject:record];
+            record.m_isOnShow = isOnShow;
+            if( [Tools checkAppInstalled:formatScheme] ) {
+                [installArrays addObject:record];
+            }
         }
     }
     return installArrays;
@@ -287,9 +257,8 @@ static LaunchAppMgr *launchAppMgr = nil;
 
         BOOL isOnShow = NO;
         if( [self.saveLaunchArrays count]>0 ) {
-            NSMutableArray *savedPage = [self.saveLaunchArrays objectAtIndex:0];
-            for( NSInteger kIndex = 0; kIndex< [savedPage count]; kIndex++ ) {
-                MyLauncherItem* saveItem = [savedPage objectAtIndex:kIndex];
+            for( NSInteger kIndex = 0; kIndex< [self.saveLaunchArrays count]; kIndex++ ) {
+                MyLauncherItem* saveItem = [self.saveLaunchArrays objectAtIndex:kIndex];
                 AppRecord* saveRecord = saveItem.apprecord;
                 if( saveRecord && [saveRecord.m_name isEqualToString:record.m_name]
                    && [saveRecord.m_scheme isEqualToString:record.m_scheme]) {

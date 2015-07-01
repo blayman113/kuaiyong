@@ -162,13 +162,13 @@
 
 - (void)didTouchCommandButton:(AppRecord*)record isOnShow:(BOOL)isOnShow {
     if( isOnShow ) {
-        NSInteger addItemCount = [[[LaunchAppMgr sharedManager].saveLaunchArrays objectAtIndex:0] count];
+        NSInteger addItemCount = [[LaunchAppMgr sharedManager].saveLaunchArrays count];
         if( addItemCount >= 16) {
             [self cannotAddApp];
             [self.tableView reloadData];
         }
         else {
-         [[LaunchAppMgr sharedManager] addLauncherItem:record];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLauncherItemChangedNotification object:record userInfo:nil];
         }
     }
     else {

@@ -109,13 +109,9 @@
     
     if( self.record.m_isOnShow ) {
         [self.switchBtn setOn:YES animated:YES];
-//        [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
-//        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green3.png"] forState:UIControlStateNormal];
     }
     else {
         [self.switchBtn setOn:NO animated:YES];
-//        [self.rightButton setTitle:@"添加" forState:UIControlStateNormal];
-//        [self.rightButton setBackgroundImage:[UIImage imageNamed:@"e_green1.png"] forState:UIControlStateNormal];
     }
     
     CGFloat lineHeight = 0.5;

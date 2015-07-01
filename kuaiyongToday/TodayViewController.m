@@ -56,27 +56,24 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
     int offsetX = (nScreenWidth - 76*4)/5;
     CGFloat x = offsetX;
     CGFloat y = 0;
-    for (NSMutableArray *page in self.saveLaunchArrays)
+    for (MyLauncherItem *item in self.saveLaunchArrays)
     {
-        for (MyLauncherItem *item in page)
+        item.frame = CGRectMake(x, y, 76, 92);
+        item.delegate = self;
+        [item layoutItem];
+        [item addTarget:self action:@selector(itemTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:item];
+        
+        item.closeButton.hidden = YES;
+        x += 76 + offsetX;
+        
+        if ( itemsCount % 4 == 0)
         {
-            item.frame = CGRectMake(x, y, 76, 92);
-            item.delegate = self;
-            [item layoutItem];
-            [item addTarget:self action:@selector(itemTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:item];
-            
-            item.closeButton.hidden = YES;
-            x += 76 + offsetX;
-            
-            if ( itemsCount % 4 == 0)
-            {
-                y += 92;
-                x = offsetX;
-            }
-            
-            itemsCount++;
+            y += 92;
+            x = offsetX;
         }
+        
+        itemsCount++;
     }
     
     itemsCount--;
@@ -160,11 +157,9 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
     
     NSUserDefaults *shareUserDefault = [[NSUserDefaults alloc] initWithSuiteName:kUserDefaultGroupID];
     NSMutableArray *mutableArray =[NSKeyedUnarchiver unarchiveObjectWithData:[shareUserDefault objectForKey:@"saveapp"]];
-    
-    NSMutableArray *savedPage = [[NSMutableArray alloc] init];
-    for (NSMutableArray *page in mutableArray)
-    {
-        for (NSDictionary *item in page)
+    if( mutableArray ) {
+        NSMutableArray *savedPage = [[NSMutableArray alloc] init];
+        for (NSDictionary *item in mutableArray)
         {
             NSString* title = [item objectForKey:@"title"];
             NSString* image = [item objectForKey:@"image"];
@@ -180,14 +175,30 @@ NSString *kUserDefaultGroupID = @"group.360.freewifi";
             AppRecord* calendarRecord = [AppRecord initAppRecord:image toName:title toScheme:targetTitle isSystemApp:isSystemApp isPrefsRoot:isPrefsRoot];
             MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
             if( isSystemApp ) {
-                [savedPage addObject:calendarItem];
+                [self.saveLaunchArrays addObject:calendarItem];
             }
             else if([self checkAppInstalled:formatScheme]) {
-                [savedPage addObject:calendarItem];
+                [self.saveLaunchArrays addObject:calendarItem];
             }
         }
     }
-    [self.saveLaunchArrays addObject:savedPage];
+    else {
+        AppRecord* calendarRecord = [AppRecord initAppRecord:@"app_calendar.png" toName:@"日历" toScheme:@"calshow" isSystemApp:YES isPrefsRoot:NO];
+        MyLauncherItem* calendarItem = [[MyLauncherItem alloc] initWithRecord:calendarRecord];
+        [self.saveLaunchArrays addObject:calendarItem];
+        
+        AppRecord* photoRecord = [AppRecord initAppRecord:@"app_photos.png" toName:@"照片" toScheme:@"photos-redirect" isSystemApp:YES isPrefsRoot:NO];
+        MyLauncherItem* photoItem = [[MyLauncherItem alloc] initWithRecord:photoRecord];
+        [self.saveLaunchArrays addObject:photoItem];
+        
+        AppRecord* notesRecord = [AppRecord initAppRecord:@"app_reminders" toName:@"提醒事项" toScheme:@"x-apple-reminder" isSystemApp:YES isPrefsRoot:NO];
+        MyLauncherItem* notesItem = [[MyLauncherItem alloc] initWithRecord:notesRecord];
+        [self.saveLaunchArrays addObject:notesItem];
+        
+        AppRecord* weatherRecord = [AppRecord initAppRecord:@"app_safari.png" toName:@"Safari" toScheme:@"http://baidu.com" isSystemApp:YES isPrefsRoot:YES];
+        MyLauncherItem* weatherItem = [[MyLauncherItem alloc] initWithRecord:weatherRecord];
+        [self.saveLaunchArrays addObject:weatherItem];
+    }
 }
 
 @end

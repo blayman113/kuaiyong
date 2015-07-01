@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A782553B1B43DEA900D49E95 /* LaunchGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A782553A1B43DEA900D49E95 /* LaunchGuideViewController.m */; };
+		A78255421B43E6B400D49E95 /* guide_page_0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A782553C1B43E6B400D49E95 /* guide_page_0@3x.png */; };
+		A78255431B43E6B400D49E95 /* guide_page_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A782553D1B43E6B400D49E95 /* guide_page_1@3x.png */; };
+		A78255441B43E6B400D49E95 /* guide_page_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A782553E1B43E6B400D49E95 /* guide_page_2@3x.png */; };
+		A78255451B43E6B400D49E95 /* guide_page_small_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A782553F1B43E6B400D49E95 /* guide_page_small_0@2x.png */; };
+		A78255461B43E6B400D49E95 /* guide_page_small_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A78255401B43E6B400D49E95 /* guide_page_small_1@2x.png */; };
+		A78255471B43E6B400D49E95 /* guide_page_small_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A78255411B43E6B400D49E95 /* guide_page_small_2@2x.png */; };
 		A788E7441B424F5F00206410 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A788E7261B424F5F00206410 /* CopyConnection.framework */; };
 		A788E7451B424F5F00206410 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A788E7271B424F5F00206410 /* QQConnection.framework */; };
 		A788E7461B424F5F00206410 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A788E7281B424F5F00206410 /* QZoneConnection.framework */; };
@@ -232,6 +239,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A78255391B43DEA900D49E95 /* LaunchGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchGuideViewController.h; sourceTree = "<group>"; };
+		A782553A1B43DEA900D49E95 /* LaunchGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchGuideViewController.m; sourceTree = "<group>"; };
+		A782553C1B43E6B400D49E95 /* guide_page_0@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_0@3x.png"; sourceTree = "<group>"; };
+		A782553D1B43E6B400D49E95 /* guide_page_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_1@3x.png"; sourceTree = "<group>"; };
+		A782553E1B43E6B400D49E95 /* guide_page_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_2@3x.png"; sourceTree = "<group>"; };
+		A782553F1B43E6B400D49E95 /* guide_page_small_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_small_0@2x.png"; sourceTree = "<group>"; };
+		A78255401B43E6B400D49E95 /* guide_page_small_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_small_1@2x.png"; sourceTree = "<group>"; };
+		A78255411B43E6B400D49E95 /* guide_page_small_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_page_small_2@2x.png"; sourceTree = "<group>"; };
 		A788E7261B424F5F00206410 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		A788E7271B424F5F00206410 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		A788E7281B424F5F00206410 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
@@ -713,6 +728,12 @@
 		A7DC29F51B2C5B6E00D07F9F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A782553C1B43E6B400D49E95 /* guide_page_0@3x.png */,
+				A782553D1B43E6B400D49E95 /* guide_page_1@3x.png */,
+				A782553E1B43E6B400D49E95 /* guide_page_2@3x.png */,
+				A782553F1B43E6B400D49E95 /* guide_page_small_0@2x.png */,
+				A78255401B43E6B400D49E95 /* guide_page_small_1@2x.png */,
+				A78255411B43E6B400D49E95 /* guide_page_small_2@2x.png */,
 				A7E79D9E1B40EFEC007F3D56 /* app_icon.png */,
 				A7E79D931B3FF14F007F3D56 /* icon_arrow_normal@2x.png */,
 				A7E79D941B3FF14F007F3D56 /* icon_arrow_normal@3x.png */,
@@ -823,6 +844,8 @@
 				A7E79D911B3FEFAA007F3D56 /* SettingsTableViewCell.m */,
 				A7E79D9B1B40E802007F3D56 /* AboutViewController.h */,
 				A7E79D9C1B40E802007F3D56 /* AboutViewController.m */,
+				A78255391B43DEA900D49E95 /* LaunchGuideViewController.h */,
+				A782553A1B43DEA900D49E95 /* LaunchGuideViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1036,15 +1059,19 @@
 				A7D971281B300FE100F8997D /* item_delete@2x.png in Resources */,
 				A7E79D8B1B3FEB20007F3D56 /* item_delete1.png in Resources */,
 				A7DC29C51B2C4C6B00D07F9F /* LaunchScreen.xib in Resources */,
+				A78255431B43E6B400D49E95 /* guide_page_1@3x.png in Resources */,
 				A7DC2A6E1B2C5B6E00D07F9F /* app_reminders.png in Resources */,
 				A7DC2A4E1B2C5B6E00D07F9F /* settings@2x.png in Resources */,
 				A7DC2A441B2C5B6E00D07F9F /* help@2x.png in Resources */,
 				A7DC2A561B2C5B6E00D07F9F /* app_facetime.png in Resources */,
 				A7E79D961B3FF14F007F3D56 /* icon_arrow_normal@3x.png in Resources */,
+				A78255421B43E6B400D49E95 /* guide_page_0@3x.png in Resources */,
 				A7DC2A581B2C5B6E00D07F9F /* app_gamecenter.png in Resources */,
 				A7DC2A731B2C5B6E00D07F9F /* app_videos.png in Resources */,
 				A7DC2A571B2C5B6E00D07F9F /* app_facetime@2x.png in Resources */,
+				A78255471B43E6B400D49E95 /* guide_page_small_2@2x.png in Resources */,
 				A7DC2A471B2C5B6E00D07F9F /* icon_bg@2x.png in Resources */,
+				A78255441B43E6B400D49E95 /* guide_page_2@3x.png in Resources */,
 				A7DC2A5E1B2C5B6E00D07F9F /* app_itunes.png in Resources */,
 				A7DC2A621B2C5B6E00D07F9F /* app_maps.png in Resources */,
 				A7DC2A681B2C5B6E00D07F9F /* app_passbook.png in Resources */,
@@ -1069,6 +1096,7 @@
 				A7DC2A541B2C5B6E00D07F9F /* app_clock.png in Resources */,
 				A7DC2A5A1B2C5B6E00D07F9F /* app_ibooks.png in Resources */,
 				A7D9713B1B3032CA00F8997D /* quc_nav_back_pressed@2x.png in Resources */,
+				A78255451B43E6B400D49E95 /* guide_page_small_0@2x.png in Resources */,
 				A7DC2A401B2C5B6E00D07F9F /* feedback.png in Resources */,
 				A7DC2A501B2C5B6E00D07F9F /* app_appstore.png in Resources */,
 				A788E7541B424F5F00206410 /* ShareSDKFlatShareViewUI.bundle in Resources */,
@@ -1121,6 +1149,7 @@
 				A7DC2A3F1B2C5B6E00D07F9F /* exit@3x.png in Resources */,
 				A7DC2A5D1B2C5B6E00D07F9F /* app_imessage@2x.png in Resources */,
 				A7DC2A531B2C5B6E00D07F9F /* app_calendar@2x.png in Resources */,
+				A78255461B43E6B400D49E95 /* guide_page_small_1@2x.png in Resources */,
 				A7DC2A4C1B2C5B6E00D07F9F /* info@3x.png in Resources */,
 				A7DC2A761B2C5B6E00D07F9F /* app_weather@2x.png in Resources */,
 				A7DC2A411B2C5B6E00D07F9F /* feedback@2x.png in Resources */,
@@ -1200,6 +1229,7 @@
 				A7E79D9D1B40E802007F3D56 /* AboutViewController.m in Sources */,
 				A7E79D8F1B3FEEA1007F3D56 /* SettingsViewController.m in Sources */,
 				A7DC29E91B2C52F500D07F9F /* CustomBadge.m in Sources */,
+				A782553B1B43DEA900D49E95 /* LaunchGuideViewController.m in Sources */,
 				A7DC29EA1B2C52F500D07F9F /* MyLauncherItem.m in Sources */,
 				A7E79D921B3FEFAA007F3D56 /* SettingsTableViewCell.m in Sources */,
 				A7D971331B3023AA00F8997D /* DSNavigationBar.m in Sources */,

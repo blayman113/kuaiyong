@@ -16,8 +16,9 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
+#import "LaunchGuideViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <LaunchGuideViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
@@ -31,13 +32,19 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [self initMainView];
-
     [[LaunchAppMgr sharedManager] initalize];
     
     [self.window makeKeyAndVisible];
     
     [self initShareSDK];
+    
+    if ([LaunchGuideViewController firstTimeStartForCurrentVersion]) {
+        [self showLaunchViewController];
+    }
+    else {
+        [self initMainView];
+    }
+
     return YES;
 }
 
@@ -71,10 +78,20 @@
     self.navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[DSNavigationBar class] toolbarClass:nil];
 
     [self.navigationController setViewControllers:@[[[ViewController alloc] init]]];
-    //40,141,255
-    UIColor * color = [UIColor colorWithRed:(40/255.0) green:(141/255.0) blue:(255/255) alpha:1.0f];
     [[DSNavigationBar appearance] setNavigationBarWithColor:COLOR(80, 87, 131)];
     [self.window setRootViewController:self.navigationController];
+}
+
+- (void) showLaunchViewController
+{
+    LaunchGuideViewController *guideViewController = [[LaunchGuideViewController alloc] init];
+    guideViewController.view.frame = [UIScreen mainScreen].bounds;
+    guideViewController.delegate = self;
+    self.window.rootViewController = guideViewController;
+}
+
+- (void) didGuideViewEnded {
+    [self initMainView];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
